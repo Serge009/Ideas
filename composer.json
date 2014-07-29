@@ -1,0 +1,9 @@
+{
+    "require": {
+        "doctrine/orm": "*"
+    },
+
+    "autoload": {
+        "psr-4": {"Main\\": "application/libs"}
+    }
+}
