@@ -29,3 +29,6 @@ define('DB_HOST', 'localhost');
 define('DB_NAME', 'ideas');
 define('DB_USER', 'root');
 define('DB_PASS', '');
+
+define("ROLE_ADMIN", 1);
+define("ROLE_USER", 2);
