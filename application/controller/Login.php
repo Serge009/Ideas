@@ -3,7 +3,7 @@
  * Login controller
  * @author Serge Naumovych
  */
-namespace Main\Controller{
+
 
 class login extends Controller {
 
@@ -29,5 +29,4 @@ class login extends Controller {
 
        include_once "templates/login.php";
     }
-}
 }

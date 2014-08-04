@@ -4,6 +4,7 @@
     },
 
     "autoload": {
-        "psr-4": {"Main\\": "application/libs"}
+        "classmap": ["application/libs/", "application/controller/", "application/models", "application/entity"],
+        "files": ["application/config/config.php"]
     }
 }

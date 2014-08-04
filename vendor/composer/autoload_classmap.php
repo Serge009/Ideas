@@ -6,4 +6,15 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'Application' => $baseDir . '/application/libs/Application.php',
+    'Connection' => $baseDir . '/application/libs/connection.php',
+    'Controller' => $baseDir . '/application/libs/Controller.php',
+    'Error' => $baseDir . '/application/libs/error.php',
+    'LoginModel' => $baseDir . '/application/models/loginmodel.php',
+    'Logout' => $baseDir . '/application/controller/logout.php',
+    'LogoutModel' => $baseDir . '/application/models/logoutmodel.php',
+    'Model' => $baseDir . '/application/libs/model.php',
+    'ModelException' => $baseDir . '/application/libs/modelexception.php',
+    'User' => $baseDir . '/application/libs/user.php',
+    'login' => $baseDir . '/application/controller/Login.php',
 );
