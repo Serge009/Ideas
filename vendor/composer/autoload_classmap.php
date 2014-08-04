@@ -7,14 +7,14 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Application' => $baseDir . '/application/libs/Application.php',
-    'Connection' => $baseDir . '/application/libs/connection.php',
+    'Connection' => $baseDir . '/application/libs/Connection.php',
     'Controller' => $baseDir . '/application/libs/Controller.php',
-    'Error' => $baseDir . '/application/libs/error.php',
-    'LoginModel' => $baseDir . '/application/models/loginmodel.php',
+    'Error' => $baseDir . '/application/libs/Error.php',
+    'LoginModel' => $baseDir . '/application/models/LoginModel.php',
     'Logout' => $baseDir . '/application/controller/logout.php',
-    'LogoutModel' => $baseDir . '/application/models/logoutmodel.php',
-    'Model' => $baseDir . '/application/libs/model.php',
-    'ModelException' => $baseDir . '/application/libs/modelexception.php',
-    'User' => $baseDir . '/application/libs/user.php',
+    'LogoutModel' => $baseDir . '/application/models/LogoutModel.php',
+    'Model' => $baseDir . '/application/libs/Model.php',
+    'ModelException' => $baseDir . '/application/libs/ModelException.php',
+    'User' => $baseDir . '/application/entity/User.php',
     'login' => $baseDir . '/application/controller/Login.php',
 );

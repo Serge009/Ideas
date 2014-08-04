@@ -1,8 +1,4 @@
 {
-    "require": {
-        "doctrine/orm": "*"
-    },
-
     "autoload": {
         "classmap": ["application/libs/", "application/controller/", "application/models", "application/entity"],
         "files": ["application/config/config.php"]

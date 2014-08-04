@@ -2,9 +2,6 @@
 // load the (optional) Composer auto-loader
 require "vendor/autoload.php";
 
-use Doctrine\ORM\Tools\Setup;
-use Doctrine\ORM\EntityManager;
-
 $paths = array("application/entity");
 $isDevMode = true;
 
@@ -16,8 +13,8 @@ $dbParams = array(
     'dbname'   => 'ideas',
 );
 
-$config = Setup::createAnnotationMetadataConfiguration($paths, $isDevMode);
-$entityManager = EntityManager::create($dbParams, $config);
+//$config = Setup::createAnnotationMetadataConfiguration($paths, $isDevMode);
+//$entityManager = EntityManager::create($dbParams, $config);
 
 // start the application
 $app = new Application();
