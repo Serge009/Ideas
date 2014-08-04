@@ -20,13 +20,17 @@ class Controller
     function __construct(EntityManager $em)
     {
         $this->em = $em;
-        $this->smarty = new Smarty();
-        $this->loader = new Twig_Loader_Filesystem("templates/");
-        $this->twig = new Twig_Environment($this->loader);
+        $this->setOptions();
     }
 
     public function index(){
         $this->checkAccess();
+    }
+
+    protected function setOptions(){
+        $this->smarty = new Smarty();
+        $this->loader = new Twig_Loader_Filesystem("public/templates");
+        $this->twig = new Twig_Environment($this->loader);
     }
 
 

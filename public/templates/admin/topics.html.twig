@@ -1,0 +1,24 @@
+{% extends "base.html.twig" %}
+{% block inner %}
+    <table>
+        <thead>
+        <tr>
+            <th>Creator</th>
+            <th>Date</th>
+            <th>Title</th>
+            <th>Message</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for topic in topics %}
+            <tr>
+                <td>{{ topic.creator.name ~ ' ' ~ topic.creator.surname }}</td>
+                <td>{{ topic.dateCreated | date('Y-m-d H:i:s') }}</td>
+                <td>{{ topic.title }}</td>
+                <td>{{ topic.message }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends "base.html.twig" %}
+{% block inner %}
+    <table>
+        <thead>
+        <tr>
+            <th>Author</th>
+            <th>Topic</th>
+            <th>Comment</th>
+            <th>Picture</th>
+            <th>Date</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for comment in comments %}
+            <tr>
+                <td>{{ comment.creator.name }}</td>
+                <td>{{ comment.topic.title }}</td>
+                <td>{{ comment.comment }}</td>
+                <td>{{ comment.picture }}</td>
+                <td>{{ comment.dateCreated|date('Y-m-d H:i:s') }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}
