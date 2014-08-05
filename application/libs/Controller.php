@@ -9,12 +9,19 @@ use \Doctrine\ORM\EntityManager;
 class Controller
 {
     /**
-     * @var EntityManager
+     * @type EntityManager
+     * Doctrine 2 Entity Manager
      */
     protected $em;
 
     protected $loader;
+    /**
+     * @var Twig_Environment
+     */
     protected $twig;
+    /**
+     * @var Smarty
+     */
     protected $smarty;
 
     function __construct(EntityManager $em)

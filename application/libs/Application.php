@@ -31,7 +31,19 @@ class Application {
            $this->url_controller = new $this->url_controller($em);
 
             // check for method: does such a method exist in the controller ?
-            if (method_exists($this->url_controller, $this->url_action)) {
+            // call the method and pass the arguments to it
+            if(!is_callable(array($this->url_controller, $this->url_action))){
+                $this->url_controller->index();
+            } elseif (isset($this->url_parameter_3)) {
+                // will translate to something like $this->login->method($param_1, $param_2, $param_3);
+                $this->url_controller->{$this->url_action}($this->url_parameter_1, $this->url_parameter_2, $this->url_parameter_3);
+            } elseif (isset($this->url_parameter_2)) {
+                // will translate to something like $this->login->method($param_1, $param_2);
+                $this->url_controller->{$this->url_action}($this->url_parameter_1, $this->url_parameter_2);
+            } elseif (isset($this->url_parameter_1)) {
+                // will translate to something like $this->login->method($param_1);
+                $this->url_controller->{$this->url_action}($this->url_parameter_1);
+            } elseif (method_exists($this->url_controller, $this->url_action)) {
                 $this->url_controller->{$this->url_action}();
 
             } else {
@@ -69,29 +81,37 @@ class Application {
 
     private function checkAccess(){
         $controller = strtolower($this->url_controller);
-        if(isset($_SESSION['user_type'])){
+        if(in_array($controller, array("login", "logout"))){
+            //NOP
+        } elseif(isset($_SESSION['user_type'])){
 
             $userType = $_SESSION['user_type'];
 
             switch($userType){
                 case ROLE_ADMIN:
-                    if(!in_array($controller, UserTypes::$adminPages))
+                    if(!in_array($controller, UserTypes::$adminPages)){
                         header("Location: " . URL . "admin");
+                        exit;
+                    }
                     break;
 
                 case ROLE_USER:
-                    if(!in_array($controller, UserTypes::$userPages))
+                    if(!in_array($controller, UserTypes::$userPages)){
                         header("Location: " . URL );
+                        exit;
+                    }
                     break;
 
                 default:
                     session_destroy();
                     header("Location: " . URL . "login");
+                    exit;
             }
 
-        } elseif($controller != "login"){
+        } elseif(!in_array($controller, array("login", "logout"))){
             session_destroy();
             header("Location: " . URL . "login");
+            exit;
         }
 
 

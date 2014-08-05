@@ -10,8 +10,6 @@ class LoginController extends Controller {
     public function index(){
 
         if(!(isset($_POST['login']) || isset($_POST['pass']))){
-            //$this->smarty->assign(array('name' => 'Test'));
-            //$this->smarty->display("templates/login.php");
             echo $this->twig->render('login.html.twig');
             return;
         }
@@ -27,8 +25,6 @@ class LoginController extends Controller {
             $_SESSION['user_type'] = $userType;
             $this->checkAccess($userType);
         } else {
-            //$this->smarty->assign(array('name' => 'Test'));
-            //$this->smarty->display("templates/login.php");
             echo $this->twig->render('login.html.twig', array('error' => 'Login or Password is incorrect!'));
         }
     }

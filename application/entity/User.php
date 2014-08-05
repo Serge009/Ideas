@@ -36,6 +36,12 @@ class User {
      */
     private $type;
 
+    /**
+     * @Column(type="boolean", name="deleted")
+     *
+     */
+    private $deleted = false;
+
 
 
     /**
@@ -161,5 +167,30 @@ class User {
     public function getType()
     {
         return $this->type;
+    }
+
+
+
+    /**
+     * Set deleted
+     *
+     * @param boolean $deleted
+     * @return User
+     */
+    public function setDeleted($deleted)
+    {
+        $this->deleted = $deleted;
+
+        return $this;
+    }
+
+    /**
+     * Get deleted
+     *
+     * @return boolean 
+     */
+    public function getDeleted()
+    {
+        return $this->deleted;
     }
 }

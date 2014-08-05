@@ -37,13 +37,14 @@ class Comment {
      */
     private $comment;
 
-    /**
-     * @Column(type="string")
-     */
-    private $picture;
 
     /** @Column(type="datetime") */
     private $date_created;
+
+    /**
+     * @Column(type="boolean")
+     */
+    private $deleted;
 
 
     /**
@@ -79,28 +80,7 @@ class Comment {
         return $this->comment;
     }
 
-    /**
-     * Set picture
-     *
-     * @param string $picture
-     * @return Comment
-     */
-    public function setPicture($picture)
-    {
-        $this->picture = $picture;
-
-        return $this;
-    }
-
-    /**
-     * Get picture
-     *
-     * @return string 
-     */
-    public function getPicture()
-    {
-        return $this->picture;
-    }
+    
 
     /**
      * Set date_created
@@ -169,5 +149,28 @@ class Comment {
     public function getTopic()
     {
         return $this->topic;
+    }
+
+    /**
+     * Set deleted
+     *
+     * @param boolean $deleted
+     * @return Comment
+     */
+    public function setDeleted($deleted)
+    {
+        $this->deleted = $deleted;
+
+        return $this;
+    }
+
+    /**
+     * Get deleted
+     *
+     * @return boolean 
+     */
+    public function getDeleted()
+    {
+        return $this->deleted;
     }
 }

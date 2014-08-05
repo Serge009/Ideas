@@ -1,6 +1,11 @@
-{% extends "base.html.twig" %}
-{% block inner %}
-    <table>
+{% extends "admin.html.twig" %}
+{% block content %}
+    <style>
+        #users tr:hover{
+            cursor: pointer;
+        }
+    </style>
+    <table id="users" class="table table-striped table-hover tablesorter sorted-table">
         <thead>
         <tr>
             <th>Name</th>
@@ -8,16 +13,28 @@
             <th>Login</th>
             <th>Password</th>
             <th>Type</th>
+            <th>Action</th>
         </tr>
         </thead>
         <tbody>
         {% for user in users %}
-            <tr>
+            <tr onclick="location.href = '{{ url }}users/profile/{{ user.id }}'">
                 <td>{{ user.name }}</td>
                 <td>{{ user.surname }}</td>
                 <td>{{ user.login }}</td>
                 <td>{{ user.pass }}</td>
                 <td>{{ user.type.type }}</td>
+                <td>
+                    {% if user.deleted %}
+                        <a href="{{ url }}users/activate/{{ user.id }}">
+                            <i class="glyphicon glyphicon-ok"></i>
+                        </a>
+                    {% else %}
+                        <a href="{{ url }}users/delete/{{ user.id }}">
+                            <i class="glyphicon glyphicon-remove"></i>
+                        </a>
+                    {% endif %}
+                </td>
             </tr>
         {% endfor %}
         </tbody>

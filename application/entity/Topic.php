@@ -8,7 +8,7 @@
 
 /**
  * Class Topic
- * @Entity
+ * @Entity(repositoryClass="TopicRepository")
  * @Table(name="topics")
  */
 class Topic {
@@ -39,6 +39,15 @@ class Topic {
      */
     private $creator;
 
+    /**
+     * @Column(type="string")
+     */
+    private $picture;
+
+    /**
+     * @Column(type="boolean")
+     */
+    private $deleted = false;
 
 
     /**
@@ -141,5 +150,51 @@ class Topic {
     public function getMessage()
     {
         return $this->message;
+    }
+
+    /**
+     * Set picture
+     *
+     * @param string $picture
+     * @return Topic
+     */
+    public function setPicture($picture)
+    {
+        $this->picture = $picture;
+
+        return $this;
+    }
+
+    /**
+     * Get picture
+     *
+     * @return string 
+     */
+    public function getPicture()
+    {
+        return $this->picture;
+    }
+
+    /**
+     * Set deleted
+     *
+     * @param boolean $deleted
+     * @return Topic
+     */
+    public function setDeleted($deleted)
+    {
+        $this->deleted = $deleted;
+
+        return $this;
+    }
+
+    /**
+     * Get deleted
+     *
+     * @return boolean 
+     */
+    public function getDeleted()
+    {
+        return $this->deleted;
     }
 }
