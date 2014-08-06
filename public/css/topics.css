@@ -17,6 +17,11 @@
     max-height: 100px;
 }
 
+#topics-accordion .panel-heading > div.topic-comments,
+#topics-accordion .panel-heading > div.topic-rate{
+    float: right;
+}
+
 #topics-accordion .panel-heading > div {
     float: left;
 }
@@ -34,6 +39,11 @@
 #topics-accordion .topic-time {
     width: 20%;
     text-align: center;
+}
+
+#topics-accordion .panel-heading > div.topic-time {
+    margin: 0 auto;
+    position: relative;
 }
 
 #topics-accordion .topic-rate {

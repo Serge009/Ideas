@@ -28,6 +28,10 @@ class AdminController extends Controller {
         $topics = $qb->getQuery()
             ->getResult();
 
+        foreach($topics as $topic){
+            $topic->calculateMark();
+         }
+
         echo $this->twig->render("topics.html.twig", array("topics" => $topics));
     }
 
