@@ -13,6 +13,7 @@
             <th>Login</th>
             <th>Password</th>
             <th>Type</th>
+            <th>Status</th>
             <th>Action</th>
         </tr>
         </thead>
@@ -25,6 +26,10 @@
                 <td>{{ user.pass }}</td>
                 <td>{{ user.type.type }}</td>
                 <td>
+                    <span class="label label-{% if user.deleted %}danger">Deleted{% else %}success">Active{% endif %}
+                    </span>
+                </td>
+                <td>
                     {% if user.deleted %}
                         <a href="{{ url }}users/activate/{{ user.id }}">
                             <i class="glyphicon glyphicon-ok"></i>
@@ -35,6 +40,7 @@
                         </a>
                     {% endif %}
                 </td>
+
             </tr>
         {% endfor %}
         </tbody>

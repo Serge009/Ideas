@@ -1,7 +1,12 @@
 body {
     padding-top: 50px;
 }
-
+/*
+iframe {
+    height: 100%;
+    width: 100%;
+}
+*/
 .container-fixed {
     /*min-width: 800px;*/
 }
@@ -124,3 +129,4 @@ body {
         margin-right: 0;
     }
 }
+

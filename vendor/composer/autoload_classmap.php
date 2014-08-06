@@ -25,10 +25,12 @@ return array(
     'SmartyException' => $vendorDir . '/smarty/smarty/distribution/libs/Smarty.class.php',
     'Smarty_Security' => $vendorDir . '/smarty/smarty/distribution/libs/sysplugins/smarty_security.php',
     'Topic' => $baseDir . '/application/entity/Topic.php',
+    'TopicRepository' => $baseDir . '/application/repository/TopicRepository.php',
     'TopicsController' => $baseDir . '/application/controller/TopicsController.php',
     'User' => $baseDir . '/application/entity/User.php',
     'UserRepository' => $baseDir . '/application/repository/UserRepository.php',
     'UserType' => $baseDir . '/application/entity/UserType.php',
     'UserTypes' => $baseDir . '/application/libs/UserTypes.php',
+    'UsersController' => $baseDir . '/application/controller/UsersController.php',
     'Vote' => $baseDir . '/application/entity/Vote.php',
 );

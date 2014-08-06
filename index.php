@@ -24,3 +24,4 @@ $em = EntityManager::create($dbParams, $config);
 
 // start the application
 $app = new Application($em);
+

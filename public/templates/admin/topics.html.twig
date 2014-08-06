@@ -1,5 +1,6 @@
 {% extends "admin.html.twig" %}
 {% block content %}
+    <!--
     <table class="table table-striped table-hover">
         <thead>
         <tr>
@@ -34,5 +35,66 @@
         {% endfor %}
         </tbody>
     </table>
+
+-->
+
+
+    <div class="panel-group" id="topics-accordion">
+    {% for topic in topics %}
+        <div class="panel panel-default">
+
+            <a data-toggle="collapse" data-parent="#topics-accordion" href="#collapseOne">
+                <div class="panel-heading">
+                    <div class="topic-title">{{ topic.title }}</div>
+                    <div class="topic-author">{{ topic.creator.name ~ ' ' ~ topic.creator.surname }}</div>
+                    <div class="topic-time">{{ topic.dateCreated | date('Y-m-d H:i:s') }}</div>
+                    <div class="topic-rate">
+                        !<i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>!
+                    </div>
+                    <div class="topic-comments">
+                        !<i class="fa fa-comment"></i> 20!
+                    </div>
+                </div>
+            </a>
+
+            <div id="collapseOne" class="panel-collapse collapse">
+                <div class="panel-body">
+                    <div class="topics-header">
+                        <p>{{ topic.message }}</p>
+                    </div>
+                    <div class="topics-embed embed-responsive embed-responsive-16by9"
+                         style="{%  if topic.picture is empty %}display: none;{% endif %}">
+                        <iframe class="embed-responsive-item"
+                                src="{{ topic.picture }}" ></iframe>
+                    </div>
+                    <br />
+                    <div class="topics-comments">
+                        <table class="table table-striped table-hover">
+
+                            <tbody>
+                            <tr>
+                                <td>user user</td>
+                                <td>2014-08-04 10:12:47</td>
+                                <td>Some title!</td>
+                                <td>Ha-ha!</td>
+                                <td></td>
+                                <td>
+                                    <a href="/ideas/topics/delete/1">
+                                        <i class="glyphicon glyphicon-remove"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+
+    </div>
 
 {% endblock %}
