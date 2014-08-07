@@ -62,9 +62,26 @@ class Topic {
     private $votes;
 
     /**
+     * @Column(type="integer")
+     */
+    private $link_type = 1;
+
+
+    /**
      * @var float
      */
     private $mark = 0;
+
+    /**
+     * @var integer
+     */
+    private $activeCommentsCount = 0;
+
+    /**
+     * @var string
+     */
+    private $timeAgo = null;
+
 
     /**
      * @param float $mark
@@ -322,5 +339,97 @@ class Topic {
             $this->mark = 0;
         }
 
+    }
+
+    public function getActiveCommentsCount(){
+        if($this->activeCommentsCount > 0){
+            return $this->activeCommentsCount;
+        }
+
+        $comments = $this->getComments();
+        $count = 0;
+        foreach($comments as $comment){
+            if(!$comment->getDeleted())
+                $count++;
+        }
+        $this->activeCommentsCount = $count;
+
+        return $count;
+    }
+
+    public function getDeletedCommentsCount(){
+        //TODO:
+        return 0;
+    }
+
+    /**
+     * TODO: translate
+     * @param int $granularity
+     * @return null|string
+     */
+    private function timeAgo($granularity=1) {
+        $date = ($this->date_created) ? $this->date_created->getTimestamp () : time();
+        $difference = time() - $date;
+        $periods = array('decade' => 315360000,
+            'year' => 31536000,
+            'month' => 2628000,
+            'week' => 604800,
+            'day' => 86400,
+            'hour' => 3600,
+            'minute' => 60,
+            'second' => 1);
+        if ($difference < 5) { // less than 5 seconds ago, let's say "just now"
+            $retval = "posted just now";
+            return $retval;
+        } else {
+            $retval = null;
+            foreach ($periods as $key => $value) {
+                if ($difference >= $value) {
+                    $time = floor($difference/$value);
+                    $difference %= $value;
+                    $retval .= ($retval ? ' ' : '').$time.' ';
+                    $retval .= (($time > 1) ? $key.'s' : $key);
+                    $granularity--;
+                }
+                if ($granularity == '0') { break; }
+            }
+            return ($retval) ? $retval.' ago' : "";
+        }
+    }
+
+    /**
+     * @return string
+     */
+    public function getTimeAgo()
+    {
+        if(!$this->timeAgo){
+            $this->timeAgo = $this->timeAgo();
+        }
+        return $this->timeAgo;
+    }
+
+
+
+    /**
+     * Set link_type
+     *
+     * @param integer $linkType
+     * @return Topic
+     */
+    public function setLinkType($linkType)
+    {
+        $this->link_type = $linkType;
+
+        return $this;
+    }
+
+    /**
+     * Get link_type
+     *
+     * @return integer 
+     */
+    public function getLinkType()
+    {
+        return $this->link_type;
     }
 }

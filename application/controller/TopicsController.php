@@ -21,6 +21,105 @@ class TopicsController extends Controller {
         echo $this->twig->render("topics.html.twig", array("topics" => $topics));
     }
 
+    public function create(){
+        $errors = array();
+        $success = array();
+
+        try{
+            if($_SERVER['REQUEST_METHOD'] == "POST"){
+                $this->createTopic();
+                array_push($success, "Posted!");
+            }
+        } catch(Exception $e){
+            array_push($errors, $e->getMessage());
+        }
+
+
+        echo $this->twig->render("newtopic.html.twig", array("errors" => $errors, "successes" => $success));
+    }
+
+    private function createTopic(){
+
+        if(empty($_POST))
+            throw new Exception("POST is empty");
+
+        $msg = $this->validate($_POST['topic-msg']);
+        $title = $this->validate($_POST['topic-title']);
+        $link = $this->getLink();
+        $tmp = $this->getFileType($link['type']);
+        $link['type'] = $tmp['code'];
+
+
+        $creator = $this->em->getRepository("User")->findOneBy(array("id" => $_SESSION['user']->getId()));
+        $topic = new Topic();
+        $topic->setCreator($creator)
+            ->setTitle($title)
+            ->setDateCreated(new DateTime())
+            ->setDeleted(false)
+            ->setMessage($msg)
+            ->setPicture($link['link'])
+            ->setLinkType($link['type']);
+
+        $this->em->persist($topic);
+        $this->em->flush();
+    }
+
+
+    private function getLink(){
+        if(isset($_FILES['topic-file']) && $_FILES['topic-file']['name'] ){
+            return $this->uploadFile();
+        }
+
+        if($_POST['topic-type'] == "video"){
+
+            $start =  strpos($_POST['topic-link'], "src=\"");
+            $end =  strpos($_POST['topic-link'], "\"", $start+5);
+            $_POST['topic-link'] =  substr($_POST['topic-link'], $start+5, $end-$start-5);
+
+            if(!$start || !$end || empty($_POST['topic-link']))
+                throw new Exception("Incorrect link!");
+        }
+
+        return array(
+            "link" => $_POST['topic-link'],
+            "type" => $this->validate($_POST['topic-type'])
+        );
+    }
+
+    private function uploadFile(){
+        $uploaddir = 'uploads/';
+        $type = $this->getFileType($_FILES['topic-file']['type']);
+        $uploadfile = $uploaddir . $type['name'] . "/" . uniqid() . basename($_FILES['topic-file']['name']);
+
+        if (!move_uploaded_file($_FILES['topic-file']['tmp_name'], $uploadfile)) {
+            throw new Exception("Can't upload file!");
+        }
+
+        return array(
+            "link" => URL . $uploadfile,
+            "type" => $type['name']
+        );
+    }
+
+    private function getFileType($filename){
+        $type = null;
+        if(substr( $filename, 0, 5 ) === "video"){
+            $type = array(
+                "name" => "video",
+                "code" => 1
+            );
+        } elseif (substr( $filename, 0, 5 ) === "image"){
+            $type = array(
+                "name" => "image",
+                "code" => 2
+            );
+        } else {
+            throw new Exception("Not correct file type");
+        }
+
+        return $type;
+    }
+
     public function delete($id){
         $this->changeStatus($id, true);
         header("Location: " . URL . "admin/topics");

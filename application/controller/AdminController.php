@@ -15,7 +15,7 @@ class AdminController extends Controller {
     }
 
     public function index(){
-        echo $this->twig->render("admin.html.twig");
+        $this->users();
     }
 
     public function topics(){
@@ -35,7 +35,7 @@ class AdminController extends Controller {
         echo $this->twig->render("topics.html.twig", array("topics" => $topics));
     }
 
-    public function comments(){
+    private function comments(){
 
         $comments = $this->em->getRepository("Comment")->findAll();
         echo $this->twig->render("comments.html.twig", array("comments" => $comments));
@@ -59,7 +59,7 @@ class AdminController extends Controller {
     public function shared(){
         $topics = $this->em->getRepository("Topic")->findAllByUserType($_SESSION['user']->getId());
 
-        echo $this->twig->render("topics.html.twig", array("topics" => $topics));
+        echo $this->twig->render("topics.html.twig", array("topics" => $topics, "admin" => true));
     }
 
 } 
