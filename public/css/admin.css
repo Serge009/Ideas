@@ -11,6 +11,9 @@ iframe {
     /*min-width: 800px;*/
 }
 
+video.video-js{
+    width: 100%;
+}
 
 /* Toggle Styles */
 

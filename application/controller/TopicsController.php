@@ -8,6 +8,8 @@
 
 class TopicsController extends Controller {
 
+    private static $SUPPORTED_VIDEO_FORMATS = array("video/mp4", "video/webm", "video/ogg");
+
     protected function setOptions(){
         $this->smarty = new Smarty();
         $this->loader = new Twig_Loader_Filesystem("public/templates/admin");
@@ -35,7 +37,7 @@ class TopicsController extends Controller {
         }
 
 
-        echo $this->twig->render("newtopic.html.twig", array("errors" => $errors, "successes" => $success));
+        echo $this->twig->render("newtopic.html.twig", array("errors" => $errors, "successes" => $success, "videoFormats" => self::$SUPPORTED_VIDEO_FORMATS));
     }
 
     private function createTopic(){
@@ -60,6 +62,13 @@ class TopicsController extends Controller {
             ->setPicture($link['link'])
             ->setLinkType($link['type']);
 
+        if(isset($link['file_type'])){
+            $topic->setFileType($link['file_type']);
+            if($link['type'] == 1 && !in_array($_FILES['topic-file']['type'], self::$SUPPORTED_VIDEO_FORMATS)){
+                throw new Exception("Format not supported");
+            }
+        }
+
         $this->em->persist($topic);
         $this->em->flush();
     }
@@ -67,6 +76,7 @@ class TopicsController extends Controller {
 
     private function getLink(){
         if(isset($_FILES['topic-file']) && $_FILES['topic-file']['name'] ){
+
             return $this->uploadFile();
         }
 
@@ -97,7 +107,8 @@ class TopicsController extends Controller {
 
         return array(
             "link" => URL . $uploadfile,
-            "type" => $type['name']
+            "type" => $type['name'],
+            "file_type" => $_FILES['topic-file']['type']
         );
     }
 
@@ -121,19 +132,43 @@ class TopicsController extends Controller {
     }
 
     public function delete($id){
-        $this->changeStatus($id, true);
+        $topic = $this->changeStatus($id, true);
+        if($topic){
+            if($topic->getCreator()->getId() == ROLE_ADMIN){
+                header("Location: " . URL . "admin/shared");
+                exit;
+            } else {
+                header("Location: " . URL . "admin/topics");
+                exit;
+            }
+        }
+
+        //header("Location: " . $_SERVER['HTTP_REFERRER']);
         header("Location: " . URL . "admin/topics");
+        exit;
     }
 
     public function activate($id){
-        $this->changeStatus($id, false);
+        $topic = $this->changeStatus($id, false);
+        if($topic){
+            if($topic->getCreator()->getId() == ROLE_ADMIN){
+                header("Location: " . URL . "admin/shared");
+                exit;
+            } else {
+                header("Location: " . URL . "admin/topics");
+                exit;
+            }
+        }
 
+        //header("Location: " . $_SERVER['HTTP_REFERRER']);
         header("Location: " . URL . "admin/topics");
+        exit;
     }
 
     /**
      * @param integer $id
      * @param boolean $status
+     * @return null|Topic
      */
     private function changeStatus($id, $status){
         try{
@@ -142,7 +177,9 @@ class TopicsController extends Controller {
                 $topic->setDeleted($status);
                 $this->em->persist($topic);
                 $this->em->flush();
+                return $topic;
             }
+
         } catch(Exception $e){
             //NOP
         }

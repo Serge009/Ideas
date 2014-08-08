@@ -14,6 +14,10 @@
     <script src="{{url}}public/js/jquery.min.js" type="text/javascript"></script>
     <script src="{{url}}public/js/bootstrap.min.js" type="text/javascript"></script>
     <script src="{{url}}public/js/tablesorter.js"></script>
+
+    <link href="//vjs.zencdn.net/4.7/video-js.css" rel="stylesheet">
+    <script src="//vjs.zencdn.net/4.7/video.js"></script>
+
     <script>
         $(document).ready(function(){
             $(function(){
@@ -154,8 +158,9 @@
         e.preventDefault();
         $("#wrapper").toggleClass("toggled");
     });
-</script>
 
+    document.createElement('video');document.createElement('audio');document.createElement('track');
+</script>
 </body>
 
 </html>

@@ -8,6 +8,7 @@
 
 /**
  * Class Topic
+
  * @Entity(repositoryClass="TopicRepository")
  * @Table(name="topics")
  */
@@ -66,6 +67,11 @@ class Topic {
      */
     private $link_type = 1;
 
+    /**
+     * @Column(type="string")
+     */
+    private $file_type = "";
+
 
     /**
      * @var float
@@ -81,6 +87,11 @@ class Topic {
      * @var string
      */
     private $timeAgo = null;
+
+    /**
+     * @var integer
+     */
+    private $commentsCount;
 
 
     /**
@@ -341,6 +352,16 @@ class Topic {
 
     }
 
+    public function getCommentsCount(){
+        if($this->commentsCount > 0){
+            return $this->commentsCount;
+        }
+
+        $comments = $this->getComments();
+
+        return $comments->count();
+    }
+
     public function getActiveCommentsCount(){
         if($this->activeCommentsCount > 0){
             return $this->activeCommentsCount;
@@ -431,5 +452,28 @@ class Topic {
     public function getLinkType()
     {
         return $this->link_type;
+    }
+
+    /**
+     * Set file_type
+     *
+     * @param string $fileType
+     * @return Topic
+     */
+    public function setFileType($fileType)
+    {
+        $this->file_type = $fileType;
+
+        return $this;
+    }
+
+    /**
+     * Get file_type
+     *
+     * @return string 
+     */
+    public function getFileType()
+    {
+        return $this->file_type;
     }
 }

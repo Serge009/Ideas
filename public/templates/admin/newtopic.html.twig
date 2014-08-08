@@ -16,69 +16,53 @@
             <strong>Success!</strong> {{ success }}
         </div>
     {% endfor %}
-    <form id="new-topic-form" method="post" action="{{ url }}topics/create" enctype="multipart/form-data" class="form-horizontal" role="form">
+    <form id="new-topic-form" method="post" action="{{ url }}topics/create" enctype="multipart/form-data"
+          class="form-horizontal" role="form">
         <div class="form-group">
             <label for="input-title" class="col-sm-2 control-label">Title</label>
+
             <div class="col-sm-10">
-                <input type="text" required="" name="topic-title" class="form-control" id="input-title" placeholder="Title">
+                <input type="text" required="" name="topic-title" class="form-control" id="input-title"
+                       placeholder="Title">
             </div>
         </div>
         <div class="form-group">
             <label for="input-msg" class="col-sm-2 control-label">Message</label>
+
             <div class="col-sm-10">
-                <textarea class="form-control" required="" name="topic-msg" id="input-msg" placeholder="Type msg!"></textarea>
-                <input id="topic-input-file" type="file" class="hidden" name="topic-file" />
-                <input id="topic-input-link" type="text" class="hidden" name="topic-link" />
-                <input id="topic-input-type" value="image" type="text" class="hidden" name="topic-type" />
+                <textarea class="form-control" required="" name="topic-msg" id="input-msg"
+                          placeholder="Type msg!"></textarea>
+                <input id="topic-input-file" type="file" class="hidden" name="topic-file"/>
+                <input id="topic-input-link" type="text" class="hidden" name="topic-link"/>
+                <input id="topic-input-type" value="image" type="text" class="hidden" name="topic-type"/>
             </div>
         </div>
 
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
-                <input type="submit" class="button btn btn-default" value="Create" />
-                <button type="button" class="btn btn-success"  data-toggle="modal" data-target="#topic-file">
+                <input type="submit" class="button btn btn-default" value="Create"/>
+                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#topic-file">
                     File
                 </button>
             </div>
         </div>
     </form>
 
-    <div class="modal fade" id="topic-file" tabindex="-1" role="dialog"  aria-hidden="true">
+    <div class="modal fade" id="topic-file" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-sm">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <button type="button" class="close" data-dismiss="modal"><span
+                                aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                     <h4 class="modal-title">Select type</h4>
                 </div>
-
-                    <!--
-                     <div class="modal-body">
-                    <ul id="topicFile" class="nav nav-tabs" role="tablist">
-                        <li class="active"><a href="#picture-tab" role="tab" data-toggle="tab">Picture</a></li>
-                        <li class=""><a href="#video-tab" role="tab" data-toggle="tab">Video</a></li>
-                   </ul>
-                    <div id="topicFileContent" class="tab-content">
-                        <div class="tab-pane fade active in" id="picture-tab">
-                            <p>
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                            </p>
-                        </div>
-                        <div class="tab-pane fade" id="video-tab">
-                            <p>
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                            </p>
-                        </div>
-                   </div>
-                    </div>
-                    -->
-
                 <div class="modal-footer">
-                    <button id="type-picture-btn" type="button" class="btn btn-default" data-dismiss="modal" data-toggle="modal" data-target="#topic-picture-modal">
+                    <button id="type-picture-btn" type="button" class="btn btn-default" data-dismiss="modal"
+                            data-toggle="modal" data-target="#topic-picture-modal">
                         Picture
                     </button>
-                    <button id="type-video-btn" type="button" class="btn btn-default" data-dismiss="modal" data-toggle="modal" data-target="#topic-video-modal">
+                    <button id="type-video-btn" type="button" class="btn btn-default" data-dismiss="modal"
+                            data-toggle="modal" data-target="#topic-video-modal">
                         Video
                     </button>
                 </div>
@@ -90,12 +74,14 @@
         <div class="modal-dialog modal-sm">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <button type="button" class="close" data-dismiss="modal"><span
+                                aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                     <h4 class="modal-title">Select video src</h4>
                 </div>
                 <div class="modal-footer">
                     <button id="local-video" type="button" class="btn btn-default" data-dismiss="modal">Local</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal" data-toggle="modal" data-target="#topic-link-modal">
+                    <button type="button" class="btn btn-default" data-dismiss="modal" data-toggle="modal"
+                            data-target="#topic-link-modal">
                         Link
                     </button>
                 </div>
@@ -107,12 +93,14 @@
         <div class="modal-dialog modal-sm">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <button type="button" class="close" data-dismiss="modal"><span
+                                aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                     <h4 class="modal-title">Select picture src</h4>
                 </div>
                 <div class="modal-footer">
                     <button id="local-picture" type="button" class="btn btn-default" data-dismiss="modal">Local</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal" data-toggle="modal" data-target="#topic-link-modal">
+                    <button type="button" class="btn btn-default" data-dismiss="modal" data-toggle="modal"
+                            data-target="#topic-link-modal">
                         Link
                     </button>
                 </div>
@@ -124,15 +112,17 @@
         <div class="modal-dialog modal-sm">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <button type="button" class="close" data-dismiss="modal"><span
+                                aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                     <h4 class="modal-title">Put link bellow</h4>
                 </div>
                 <div class="modal-body">
                     <div id="not-valid-url-msg" class="alert alert-danger hidden" role="alert">
-                        <button type="button" class="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                         Not valid url!
+                        <button type="button" class="close"><span aria-hidden="true">&times;</span><span
+                                    class="sr-only">Close</span></button>
+                        Not valid url!
                     </div>
-                    <input id="file-link" type="text" class="form-control" />
+                    <input id="file-link" type="text" class="form-control"/>
                 </div>
                 <div class="modal-footer">
                     <button id="save-link" type="button" class="btn btn-default" data-dismiss="modal">Save</button>
@@ -141,48 +131,89 @@
         </div>
     </div>
 
+    <div class="modal fade" id="video-not-supported" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span
+                                aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title">Sorry! This format not supported yet!</h4>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
-        function isUrl(s) {
-            //var regexp = /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/
-            //return regexp.test(s);
-            return true;
+        var supportedVideoFormats = [
+            {% for format in videoFormats %}
+            "{{ format }}",
+            {% endfor %}
+        ];
+
+        function isFormatSupported(f) {
+            return (supportedVideoFormats.indexOf(f) != -1) ? true : false;
         }
 
-        $("#not-valid-url-msg .close").bind("click", function(){
+        function isUrl(s) {
+            //var regexp = /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/
+            var regexp = /(.+)iframe(.+)src="()/
+            return regexp.test(s);
+            //return true;
+        }
+
+        $("#not-valid-url-msg .close").bind("click", function () {
             $("#not-valid-url-msg").addClass("hidden");
         });
 
-        $("#local-picture").bind("click", function(){
+        $("#local-picture").bind("click", function () {
             var input = $("input#topic-input-file");
             input.attr("accept", "image/*");
             input.trigger("click");
         });
 
-        $("#local-video").bind("click", function(){
-            var input = $("input#topic-input-file");
+        $("#local-video").bind("click", function () {
+            var input = $("input#topic-input-file"),
+                    types = supportedVideoFormats.join(", ");
             input.attr("accept", "video/*");
             input.trigger("click");
         });
 
-        $("#type-video-btn").bind("click", function(){
+        $("#type-video-btn").bind("click", function () {
             $("#new-topic-form #topic-input-type").val("video");
         });
 
-        $("#type-picture-btn").bind("click", function(){
+        $("#type-picture-btn").bind("click", function () {
             $("#new-topic-form #topic-input-type").val("image");
         });
 
-        $("#save-link").bind("click", function(){
+        $("#save-link").bind("click", function () {
             var link = $("input#file-link").val(),
                     msg = $("#not-valid-url-msg");
             $("input#topic-input-file").val(null);
-            if(!isUrl(link)){
+            if (!isUrl(link)) {
                 msg.removeClass("hidden");
                 return false;
             }
             msg.addClass("hidden");
             $("#new-topic-form #topic-input-link").val(link);
         });
+
+        $("#new-topic-form").submit(function () {
+            var file = document.getElementById('topic-input-file').files[0];
+            if (file && $("#new-topic-form #topic-input-type").val() == "video") {
+                if (!isFormatSupported(file['type'])) {
+                    $('#video-not-supported').modal("show");
+                    return false;
+                }
+            }
+
+        });
+
+        //var file = document.getElementById('file').files[0];
     </script>
 
 

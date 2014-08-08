@@ -18,7 +18,8 @@
 }
 
 #topics-accordion .panel-heading > div.topic-comments,
-#topics-accordion .panel-heading > div.topic-rate{
+#topics-accordion .panel-heading > div.topic-rate,
+#topics-accordion .panel-heading > div.topic-action {
     float: right;
 }
 
@@ -46,13 +47,18 @@
     position: relative;
 }
 
+#topics-accordion .topic-action {
+    width: 5%;
+    text-align: center;
+}
+
 #topics-accordion .topic-rate {
-    width: 20%;
+    width: 15%;
     text-align: center;
 }
 
 #topics-accordion .topic-comments {
-    width: 20%;
+    width: 15%;
     text-align: center;
 }
 
