@@ -8,7 +8,7 @@
 
 class TopicsController extends Controller {
 
-    private static $SUPPORTED_VIDEO_FORMATS = array("video/mp4", "video/webm", "video/ogg");
+    public static $SUPPORTED_VIDEO_FORMATS = array("video/mp4", "video/webm", "video/ogg");
 
     protected function setOptions(){
         $this->smarty = new Smarty();
@@ -36,8 +36,8 @@ class TopicsController extends Controller {
             array_push($errors, $e->getMessage());
         }
 
-
-        echo $this->twig->render("newtopic.html.twig", array("errors" => $errors, "successes" => $success, "videoFormats" => self::$SUPPORTED_VIDEO_FORMATS));
+        if($_SESSION['user_type'] == ROLE_ADMIN)
+            echo $this->twig->render("newtopic.html.twig", array("errors" => $errors, "successes" => $success, "videoFormats" => self::$SUPPORTED_VIDEO_FORMATS));
     }
 
     private function createTopic(){

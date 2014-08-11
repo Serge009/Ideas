@@ -1,0 +1,17 @@
+{% extends "base.html.twig" %}
+{% block content %}
+    {% for topic in topics %}
+        {{ topic.id }}
+        {{ topic.creator.name }}
+        {{ topic.dateCreated|date("Y-m-d H:i:s") }}
+        {{ topic.title }}
+        {{ topic.message }}
+        {{ topic.picture }}
+        {{ topic.deleted }}
+        {{ topic.linkType }}
+        {{ topic.fileType }}<br />
+        {{ topic.mark }}
+
+
+    {% endfor %}
+{% endblock %}

@@ -1,4 +1,4 @@
-{% extends "admin.html.twig" %}
+{% extends "base.html.twig" %}
 {% block content %}
     {% for error in errors %}
         <div class="alert alert-danger alert-dismissible" role="alert">
@@ -16,7 +16,7 @@
             <strong>Success!</strong> {{ success }}
         </div>
     {% endfor %}
-    <form id="new-topic-form" method="post" action="{{ url }}topics/create" enctype="multipart/form-data"
+    <form id="new-topic-form" method="post" action="{{ url }}main/createTopic" enctype="multipart/form-data"
           class="form-horizontal" role="form">
         <div class="form-group">
             <label for="input-title" class="col-sm-2 control-label">Title</label>
