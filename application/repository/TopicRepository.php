@@ -18,4 +18,15 @@ class TopicRepository extends EntityRepository
 
         return $topics;
     }
+
+    public function findAllByUserId($id = 0){
+        //$qb = $this->getEntityManager()->createQueryBuilder("t");
+        $query = $this->getEntityManager()
+            ->createQuery("SELECT t FROM Topic t JOIN t.creator c WHERE c.id = :id")
+            ->setParameter("id", $id);
+
+        $topics = $query->execute();
+
+        return $topics;
+    }
 }

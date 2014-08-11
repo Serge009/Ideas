@@ -10,5 +10,5 @@ abstract class UserTypes {
 
     public static  $adminPages = array("admin", "users", "topics", "comments");
 
-    public static  $userPages = array("");
+    public static  $userPages = array("main");
 }

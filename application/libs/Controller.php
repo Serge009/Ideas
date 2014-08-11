@@ -51,11 +51,13 @@ class Controller
                 header("Location: " . URL . "admin");
                 break;
             case ROLE_USER:
-                header("Location: " . URL);
+                header("Location: " . URL . "main/topics");
                 break;
             default:
                 header("Location: " . URL . "login");
                 break;
         }
+
+        exit;
     }
 }

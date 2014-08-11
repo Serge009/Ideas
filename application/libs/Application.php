@@ -97,7 +97,7 @@ class Application {
 
                 case ROLE_USER:
                     if(!in_array($controller, UserTypes::$userPages)){
-                        header("Location: " . URL );
+                        header("Location: " . URL . "main/topics");
                         exit;
                     }
                     break;
