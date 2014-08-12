@@ -1,0 +1,447 @@
+{% set url="/ideas/" %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>BirFikrimVar</title>
+    <link rel="stylesheet" href="{{ url }}public/css/style.css">
+    <link rel="stylesheet" href="{{ url }}public/css/bootstrap.min.css">
+    {#<link rel="stylesheet" href="{{ url }}public/js/bootstrap.min.js">#}
+
+    <link rel="stylesheet" media="only all and (max-width: 660px)" href="{{ url }}public/css/device/mobile.css">
+    <link rel="stylesheet" media="only all and (min-width: 661px) and (max-width: 716px)"
+          href="{{ url }}public/css/device/tablet/tablet_min_width.css">
+    <link rel="stylesheet" media="only all and (min-width: 717px) and (max-width: 899px)"
+          href="{{ url }}public/css/device/tablet/tablet.css">
+    <link rel="stylesheet" media="only all and (min-width: 900px) and (max-width: 2000px)"
+          href="{{ url }}public/css/device/desktop.css">
+
+    <link rel="stylesheet" href="{{url}}public/css/font-awesome.min.css">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <script src="{{ url }}public/js/jquery.min.js"></script>
+    <script src="{{ url }}public/js/jquery-ui.min.js"></script>
+    <script src="{{ url }}public/js/jquery.mobile.custom.min.js"></script>
+    <script src="{{ url }}public/js/bootstrap.js"></script>
+    <script src="{{ url }}public/js/sort.js"></script>
+
+    <script src="{{ url }}public/js/device/mobile.js"></script>
+    <script src="{{ url }}public/js/device/tablet.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            /*
+             document.getElementById("left_vertical_menu").addEventListener("touchmove", function(event) {
+             event.stopPropagation();
+             $
+             });
+             */
+            /*
+             $("#left_vertical_menu").hover(function() {
+             $("body").css("overflow", "hidden");
+             });
+             $("#content").hover(function() {
+             $("#left_vertical_menu").css("overflow", "hidden");
+             });
+             */
+
+
+            // Разрешение экрана
+            // var x = screen.width;
+            // Берем для теста разрешение клиентской части окна браузера
+            //var width = screen.width;
+            var width = $(window).width();
+            var new_width = null;
+
+            if (width <= 650) {
+                mobile();
+                toggle = 2;
+            }
+            // Прослушка события смены ориентации
+            window.addEventListener("orientationchange", function () {
+                // Выводим числовое значение ориентации
+                toggle = 2;
+            }, false);
+            $(window).resize(function () {
+                $("#button_menu").css("left", "10px");
+                $("#left_vertical_menu").css("display", "none");
+                //new_width = screen.width;
+                new_width = $(window).width();
+
+                if (new_width <= 650) {
+                    //alert("mobile");
+                    mobile();
+                }
+                else {
+                    tablet();
+                }
+            });
+        });
+    </script>
+
+</head>
+<body>
+<div id="main">
+<div id="button_menu">
+    <i class="glyphicon glyphicon-align-justify"></i>
+</div>
+
+<div id="header">
+    <div id="logo">
+        <div style="">
+            <img src="{{ url }}public/img/logo.png" style="width: 100%;">
+        </div>
+    </div>
+    <div id="header_menu">
+        <div id="hor_menu">
+
+            <div style=""><a id="sort_time" style=""> <i class="glyphicon glyphicon-time" style=""></i> <span
+                            class="link_hide">tarike Gore</span></a></div>
+            <div><a id="sort_star"><span> <i class="glyphicon glyphicon-star"></i> <span
+                                class="link_hide">Puana Gore</span></span></a></div>
+            <div><a id="sort_comment"><span> <i class="glyphicon glyphicon-comment"></i> <span class="link_hide">Cok Kolunsulanlar</span></span></a>
+            </div>
+
+        </div>
+        <div id="tool">
+            <div style="float: left;"><i class="glyphicon glyphicon-search" style="float: left;"></i></div>
+            <div style=" float: right;"><a href="{{ url }}logout"><i class="glyphicon glyphicon-exclamation-sign" style="float: right;"></i></a></div>
+        </div>
+    </div>
+</div>
+<div id="div_sort_menu_mobile"></div>
+<div id="left_vertical_menu">
+    <div id="admin">
+        <div>
+            <span>Alican Tatli</span><br>
+            <span>Business Administrator</span>
+        </div>
+    </div>
+    <div id="list">
+        {% block menu %}
+        <ul>
+            <li><a href="{{ url }}main/topics"><span> <i
+                                class="glyphicon glyphicon-facetime-video"></i> &nbsp;Fikir Kutusu</span></a></li>
+            <li><a href="{{ url }}main/mytopics"><span> <i class="glyphicon glyphicon-book"></i> &nbsp;Fikir lerim</span></a>
+            </li>
+            <li><a href="{{ url }}main/shared"><span> <i
+                                class="glyphicon glyphicon-bookmark"></i> &nbsp;Pey Lasimral</span></a></li>
+        </ul>
+        {% endblock %}
+    </div>
+</div>
+
+<div id="content">
+<div id="button">
+    <a href="{{ url }}main/createTopic">
+        <img src="{{ url }}public/img/button.png" style="cursor: pointer; height: 60px;">
+    </a>
+</div>
+
+<div id="div_discussion" style="width: 100%; display: inline-block; margin: 0 auto; text-align: center;">
+{% block content %}
+<div class="discussion_product" data-id-discussion="2">
+    <div class="div_discussion_product">
+        <div class="info_discussion">
+            <div class="name_discussion">
+                <span>Service Lare TV 2</span>
+            </div>
+            <div class="author_discussion">
+                <span>Batu Ferman</span>
+            </div>
+        </div>
+        <div class="mark_discussion">
+            <div class="last_comment" data-time-create-discussion="1">
+                <span>1 hours ago</span>
+            </div>
+            <div class="mark_star" data-star-discussion="3">
+                    <span>
+                           <i class="glyphicon glyphicon-star" style="font-size: 14px;"></i>
+                           <i class="glyphicon glyphicon-star" style="font-size: 14px;"></i>
+                           <i class="glyphicon glyphicon-star" style="font-size: 14px;"></i>
+                           <i class="glyphicon glyphicon-star" style="font-size: 14px;"></i>
+                           <i class="glyphicon glyphicon-star" style="font-size: 14px;"></i>
+                    </span>
+            </div>
+            <div class="count_comment" data-count-comment="1">
+                    <span>
+                          <i class="glyphicon glyphicon-comment" style="font-size: 14px; margin-right: 10px;"></i>
+                          <div style="display: inline-block; float: right; margin-right: 10px;">19</div>
+                    </span>
+            </div>
+        </div>
+    </div>
+    <div style="width: 100%; display: none;">
+        <div class="description">
+            <p>
+                View media in sharp clarity on this Toshiba Satellite C55-B5201 laptop's 15.6" high-definition
+                widescreen
+                display that features native support for 720p content. The Intel® Celeron® processor delivers
+                reliability for everyday mobile computing.
+            </p>
+        </div>
+        <div class="div_img">
+            <img src="{{ url }}public/img/product.jpg"
+                 style="margin: 15px 0 15px 0;  max-height: 100%; max-width: 100%;">
+        </div>
+        <div class="evaluate">
+            <span>Puan ver</span>
+                  <span class="evaluate_star">
+                           <i class="glyphicon glyphicon-star"></i>
+                           <i class="glyphicon glyphicon-star"></i>
+                           <i class="glyphicon glyphicon-star"></i>
+                  </span>
+        </div>
+        <br>
+        <table class="table">
+            <tr>
+                <td class="author_comment">
+                    <span>Mustafa</span>
+                </td>
+                <td class="comment">
+                          <span>View media in sharp clarity on this Toshiba Satellite C55-B5201 laptop's 15.6" high-definition widescreen
+                          display that features
+                          </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="author_comment">
+                    <span>Empre</span>
+                </td>
+                <td class="comment">
+                          <span>
+                              The Intel® Celeron® processor delivers reliability for everyday mobile computing.
+                          </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="author_comment">
+                    <span>Demir</span>
+                </td>
+                <td class="comment">
+                          <span>
+                              With an 8,000,000:1 dynamic contrast ratio and up to 250 cd/m² brightness, this Dell S2340M LED HD monitor displays crisp, brilliant visuals.
+                              The tilt function allows you to easily adjust the viewing angles to suit your preferences.
+                          </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="add_comment" colspan="2">
+                    <form>
+                        <textarea style="float: left;" name="comment" class="comment"
+                                  placeholder="Yorum Yap..."></textarea>
+                        <input type="button" value="Devam" class="send">
+                    </form>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+<div class="discussion_product" data-id-discussion="3">
+    <div class="div_discussion_product">
+        <div class="info_discussion">
+            <div class="name_discussion">
+                <span>Service Lare TV 3</span>
+            </div>
+            <div class="author_discussion">
+                <span>Batu Ferman</span>
+            </div>
+        </div>
+        <div class="mark_discussion">
+            <div class="last_comment" data-time-create-discussion="3">
+                <span>3 hours ago</span>
+            </div>
+            <div class="mark_star" data-star-discussion="1">
+                    <span>
+                           <i class="glyphicon glyphicon-star" style="font-size: 14px;"></i>
+                           <i class="glyphicon glyphicon-star" style="font-size: 14px;"></i>
+                           <i class="glyphicon glyphicon-star" style="font-size: 14px;"></i>
+                    </span>
+            </div>
+            <div class="count_comment" data-count-comment="3">
+                    <span>
+                          <i class="glyphicon glyphicon-comment" style="font-size: 14px; margin-right: 10px;"></i>
+                          <div style="display: inline-block; float: right; margin-right: 10px;">3</div>
+                    </span>
+            </div>
+        </div>
+    </div>
+    <div style="width: 100%; display: none;">
+        <div class="description">
+            <p>
+                View media in sharp clarity on this Toshiba Satellite C55-B5201 laptop's 15.6" high-definition
+                widescreen
+                display that features native support for 720p content. The Intel® Celeron® processor delivers
+                reliability for everyday mobile computing.
+            </p>
+        </div>
+        <div class="div_img">
+            <img src="public/img/product.jpg" style="margin: 15px 0 15px 0; max-height: 100%; max-width: 100%;">
+        </div>
+        <div class="evaluate">
+            <span>Puan ver</span>
+                  <span class="evaluate_star">
+                           <i class="glyphicon glyphicon-star"></i>
+                           <i class="glyphicon glyphicon-star"></i>
+                           <i class="glyphicon glyphicon-star"></i>
+                           <i class="glyphicon glyphicon-star"></i>
+                           <i class="glyphicon glyphicon-star"></i>
+                  </span>
+        </div>
+        <br>
+        <table class="table">
+            <tr>
+                <td class="author_comment">
+                    <span>Mustafa</span>
+                </td>
+                <td class="comment">
+                          <span>View media in sharp clarity on this Toshiba Satellite C55-B5201 laptop's 15.6" high-definition widescreen
+                          display that features
+                          </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="author_comment">
+                    <span>Empre</span>
+                </td>
+                <td class="comment">
+                          <span>
+                              The Intel® Celeron® processor delivers reliability for everyday mobile computing.
+                          </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="author_comment">
+                    <span>Demir</span>
+                </td>
+                <td class="comment">
+                          <span>
+                              With an 8,000,000:1 dynamic contrast ratio and up to 250 cd/m² brightness, this Dell S2340M LED HD monitor displays crisp, brilliant visuals.
+                              The tilt function allows you to easily adjust the viewing angles to suit your preferences.
+                          </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="add_comment" colspan="2">
+                    <form>
+                        <textarea style="float: left;" name="comment" class="comment"
+                                  placeholder="Yorum Yap..."></textarea>
+                        <input type="button" value="Devam" class="send">
+                    </form>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+<div class="discussion_product" data-id-discussion="1">
+    <div class="div_discussion_product">
+        <div class="info_discussion">
+            <div class="name_discussion">
+                <span>Service Lare TV 1</span>
+            </div>
+            <div class="author_discussion">
+                <span>Batu Ferman</span>
+            </div>
+        </div>
+        <div class="mark_discussion">
+            <div class="last_comment" data-time-create-discussion="2">
+                <span>2 hours ago</span>
+            </div>
+            <div class="mark_star" data-star-discussion="2">
+                    <span>
+                           <i class="glyphicon glyphicon-star" style="font-size: 14px;"></i>
+                           <i class="glyphicon glyphicon-star" style="font-size: 14px;"></i>
+                           <i class="glyphicon glyphicon-star" style="font-size: 14px;"></i>
+                           <i class="glyphicon glyphicon-star" style="font-size: 14px;"></i>
+                    </span>
+            </div>
+            <div class="count_comment" data-count-comment="2">
+                    <span>
+                          <i class="glyphicon glyphicon-comment" style="font-size: 14px; margin-right: 10px;"></i>
+                          <div style="display: inline-block; float: right; margin-right: 10px;">2</div>
+                    </span>
+            </div>
+        </div>
+    </div>
+    <div style="width: 100%; display: none;">
+        <div class="description">
+            <p>
+                View media in sharp clarity on this Toshiba Satellite C55-B5201 laptop's 15.6" high-definition
+                widescreen
+                display that features native support for 720p content. The Intel® Celeron® processor delivers
+                reliability for everyday mobile computing.
+            </p>
+        </div>
+        <div class="div_img">
+            <img src="{{ url }}public/img/product.jpg"
+                 style="margin: 15px 0 15px 0;  max-height: 100%; max-width: 100%;">
+        </div>
+        <div class="evaluate">
+            <span>Puan ver</span>
+                  <span class="evaluate_star">
+                           <i class="glyphicon glyphicon-star"></i>
+                           <i class="glyphicon glyphicon-star"></i>
+                           <i class="glyphicon glyphicon-star"></i>
+                           <i class="glyphicon glyphicon-star"></i>
+                           <i class="glyphicon glyphicon-star"></i>
+                  </span>
+        </div>
+        <br>
+        <table class="table">
+            <tr>
+                <td class="author_comment">
+                    <span>Mustafa</span>
+                </td>
+                <td class="comment">
+                          <span>View media in sharp clarity on this Toshiba Satellite C55-B5201 laptop's 15.6" high-definition widescreen
+                          display that features
+                          </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="author_comment">
+                    <span>Empre</span>
+                </td>
+                <td class="comment">
+                          <span>
+                              The Intel® Celeron® processor delivers reliability for everyday mobile computing.
+                          </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="author_comment">
+                    <span>Demir</span>
+                </td>
+                <td class="comment">
+                          <span>
+                              With an 8,000,000:1 dynamic contrast ratio and up to 250 cd/m² brightness, this Dell S2340M LED HD monitor displays crisp, brilliant visuals.
+                              The tilt function allows you to easily adjust the viewing angles to suit your preferences.
+                          </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="add_comment" colspan="2">
+                    <form>
+                        <textarea style="float: left;" name="comment" class="comment"
+                                  placeholder="Yorum Yap..."></textarea>
+                        <input type="button" value="Devam" class="send">
+                    </form>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+{% endblock %}
+</div>
+</div>
+</div>
+
+</body>
+<script>
+    $(document).ready(function () {
+        $(".div_discussion_product").on("tap", function () {
+            $(this).next().slideToggle();
+        });
+    });
+</script>
+</html>

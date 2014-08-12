@@ -1,0 +1,55 @@
+#main {
+    background-color: deepskyblue;
+
+}
+
+#logo div {
+    position: absolute;
+    bottom: 7px;
+}
+
+#header_menu {
+    width: 100%;
+}
+
+.link_hide {
+    display: none;
+}
+#hor_menu {
+    float: left;
+    width: 48%;
+}
+
+#tool {
+    margin-right: 0;
+    width: 32%;
+}
+
+#hor_menu div {
+    width: 33.333% !important;
+}
+#hor_menu div:last-child {
+    width: 33.333% !important;
+}
+
+#left_vertical_menu {
+    display: inline-block;
+}
+
+
+#tool div i {
+    float: none !important;
+}
+
+#tool div {
+    position: relative;
+    text-align: center;
+    top: 46%;
+    margin: 0 auto;
+    height: 55%;
+}
+
+#list ul li a span {
+    margin-left: 0;
+}
+

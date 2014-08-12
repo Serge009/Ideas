@@ -11,7 +11,7 @@ class TopicRepository extends EntityRepository
 
         //$qb = $this->getEntityManager()->createQueryBuilder("t");
         $query = $this->getEntityManager()
-            ->createQuery("SELECT t FROM Topic t JOIN t.creator c WHERE c.type = :type")
+            ->createQuery("SELECT t FROM Topic t JOIN t.creator c WHERE c.type = :type ORDER BY t.id")
             ->setParameter("type", $userType);
 
         $topics = $query->execute();

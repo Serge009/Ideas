@@ -31,12 +31,15 @@ class MainController extends Controller {
 
     public function myTopics(){
         $topics = $this->em->getRepository("Topic")->findAllByUserId($_SESSION['user']->getId());
-        var_dump($topics);
+        foreach($topics as $topic){
+            $topic->calculateMark();
+        }
+        echo $this->twig->render("mytopics.html.twig", array("topics" => $topics));
     }
 
     public function shared(){
         $topics = $this->em->getRepository("Topic")->findAllByUserType(ROLE_ADMIN);
-        var_dump($topics);
+        echo $this->twig->render("shared.html.twig", array("topics" => $topics));
     }
 
     public function createTopic(){

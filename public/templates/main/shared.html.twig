@@ -1,11 +1,11 @@
 {% extends "main.html.twig" %}
 {% block menu %}
     <ul>
-        <li><a class="menu-active" href="{{ url }}"><span style="color: white;"> <i
+        <li><a href="{{ url }}"><span> <i
                             class="glyphicon glyphicon-facetime-video"></i> &nbsp;Fikir Kutusu</span></a></li>
-        <li><a href="{{ url }}main/mytopics"><span> <i class="glyphicon glyphicon-book"></i> &nbsp;Fikir lerim</span></a>
+        <li><a  href="{{ url }}main/mytopics"><span> <i class="glyphicon glyphicon-book"></i> &nbsp;Fikir lerim</span></a>
         </li>
-        <li><a href="{{ url }}main/shared"><span> <i
+        <li><a class="menu-active" href="{{ url }}main/shared"><span> <i
                             class="glyphicon glyphicon-bookmark"></i> &nbsp;Pey Lasimral</span></a></li>
     </ul>
 {% endblock %}
@@ -18,7 +18,7 @@
                         <span>{{ topic.title }}</span>
                     </div>
                     <div class="author_discussion">
-                        <span>{{ topic.creator.name ~ ' ' ~ topic.creator.surname }}</span>
+                        <span></span>
                     </div>
                 </div>
                 <div class="mark_discussion">
@@ -27,21 +27,12 @@
                     </div>
                     <div class="mark_star" data-star-discussion="3">
                     <span>
-                           {% for i in range(1, topic.mark) if i > 0 %}
-                               {% if i is even %}
-                                   <i class="fa fa-star"></i>
-                            {% elseif i == topic.mark %}
-                                   <i class="fa fa-star-half"></i>
-                               {% endif %}
-                           {% endfor %}
+
                     </span>
                     </div>
                     <div class="count_comment" data-count-comment="1">
                     <span>
-                          <i class="glyphicon glyphicon-comment" style="font-size: 14px; margin-right: 10px;"></i>
-                          <div style="display: inline-block; float: right; margin-right: 10px;">
-                              {{ topic.commentsCount }}
-                          </div>
+
                     </span>
                     </div>
                 </div>
@@ -78,36 +69,11 @@
                          -->
                 </div>
                 <div class="evaluate">
-                    <span>Puan ver</span>
-                  <span class="evaluate_star">
-                           <i class="glyphicon glyphicon-star"></i>
-                           <i class="glyphicon glyphicon-star"></i>
-                           <i class="glyphicon glyphicon-star"></i>
-                  </span>
+
                 </div>
                 <br>
                 <table class="table">
-                    {% for comment in topic.comments %}
-                    <tr>
-                        <td class="author_comment">
-                            <span>{{ comment.creator.name ~ ' ' ~ comment.creator.surname }}</span>
-                        </td>
-                        <td class="comment">
-                          <span>
-                              {{ comment.comment }}
-                          </span>
-                        </td>
-                    </tr>
-                    {% endfor %}
-                    <tr>
-                        <td class="add_comment" colspan="2">
-                            <form>
-                                <textarea style="float: left;" name="comment" class="comment"
-                                          placeholder="Yorum Yap..."></textarea>
-                                <input type="button" value="Devam" class="send">
-                            </form>
-                        </td>
-                    </tr>
+
                 </table>
             </div>
         </div>
