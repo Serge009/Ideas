@@ -16,6 +16,7 @@
             <strong>Success!</strong> {{ success }}
         </div>
     {% endfor %}
+    <!--
     <form id="new-topic-form" method="post" action="{{ url }}main/createTopic" enctype="multipart/form-data"
           class="form-horizontal" role="form">
         <div class="form-group">
@@ -47,6 +48,30 @@
             </div>
         </div>
     </form>
+    --->
+    <div style="width: 100%; display: inline-block;">
+        <form id="new-topic-form" method="post" action="{{ url }}main/createTopic" enctype="multipart/form-data">
+            <input type="text" required="" name="topic-title" id="input-title"
+                   placeholder="Title" style="width: 90%; height: 35px; margin-top: 10px;">
+            <textarea required="" name="topic-msg" id="input-msg"
+                      placeholder="Type msg!" rows="10" style="width: 90%; margin-top: 15px;"></textarea><br>
+
+            <input id="topic-input-file" type="file" class="hidden" name="topic-file"/>
+            <input id="topic-input-link" type="text" class="hidden" name="topic-link"/>
+            <input id="topic-input-type" value="image" type="text" class="hidden" name="topic-type"/>
+
+
+            <div style="float: left; margin-left: 5%; height: 40px; cursor: pointer;" id="div_file"
+                 data-toggle="modal" data-target="#topic-file">
+                        <span style="height: 100%; display: block; position: relative;">
+                            <i class="glyphicon glyphicon-picture" style="font-size: 32px; color: #9966CC;"></i>
+                            <span style="position: relative; bottom: 5px;" id="name_file">Fotograf yukle
+                            </span>
+                        </span>
+            </div>
+            <input type="submit" value="Devam" class="send" style="float: right; margin-right: 5%; margin-top: 5px;">
+        </form>
+    </div>
 
     <div class="modal fade" id="topic-file" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-sm">
@@ -214,6 +239,20 @@
         });
 
         //var file = document.getElementById('file').files[0];
+
+        /*
+        $(document).ready(function() {
+            $("#div_file").bind("click", function() {
+                $("#file").trigger("click", function() {});
+            });
+            $("#file").change(function (){
+                var path = $(this).val();
+                var to = path.lastIndexOf("\\");
+                var file_name = path.substring(to + 1);
+                $("#name_file").html(file_name);
+            });
+        });
+        */
     </script>
 
 

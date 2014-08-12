@@ -7,7 +7,7 @@
  * @description singleton for database connection
  */
 
-class Connection {
+final class Connection {
 
 
     /**

@@ -22,7 +22,7 @@ class MainController extends Controller {
     }
 
     public function topics(){
-        $topics = $this->em->getRepository("Topic")->findAllByUserType(ROLE_USER);
+        $topics = $this->em->getRepository("Topic")->findActiveByUserType(ROLE_USER);
         foreach($topics as $topic){
             $topic->calculateMark();
         }

@@ -29,4 +29,20 @@ class TopicRepository extends EntityRepository
 
         return $topics;
     }
+
+    public function findActiveByUserType($userType = ROLE_USER){
+        if(!in_array($userType, array(ROLE_ADMIN, ROLE_USER))){
+            return array();
+        }
+
+
+        //$qb = $this->getEntityManager()->createQueryBuilder("t");
+        $query = $this->getEntityManager()
+            ->createQuery("SELECT t FROM Topic t JOIN t.creator c WHERE c.type = :type AND t.deleted = 0 ORDER BY t.id")
+            ->setParameter("type", $userType);
+
+        $topics = $query->execute();
+
+        return $topics;
+    }
 }
