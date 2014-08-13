@@ -62,8 +62,9 @@ class MainController extends Controller {
     //$.post('/ideas/main/createComment', {"topic": 10, "comment": "sdfsdfsdfsdfsdfsdf"})
     public function createComment(){
         if($_SERVER['REQUEST_METHOD'] == "POST"){
+            $res = array("status" => false, "msg" => "", "name" => "", "surname" => "");
             if(!isset($_POST['topic']) || !isset($_POST['comment'])){
-                echo false;
+                echo json_encode($res);
             } else {
                 try{
                     $creator = $this->em->getRepository('User')->findOneBy(array("id" => $_SESSION['user']->getId()));
@@ -78,10 +79,13 @@ class MainController extends Controller {
 
                     $this->em->persist($comment);
                     $this->em->flush();
-                    echo true;
+                    $res['status'] = true;
+                    $res['name'] = $_SESSION['user']->getName;
+                    $res['surname'] = $_SESSION['user']->getSurname;
+                    echo json_encode($res);
                 } catch (Exception $e){
                     //var_dump($e);
-                    echo false;
+                    echo json_encode($res);
                 }
             }
 
