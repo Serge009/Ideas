@@ -32,34 +32,34 @@ class AdminController extends Controller {
             $topic->calculateMark();
          }
 
-        echo $this->twig->render("topics.html.twig", array("topics" => $topics));
+        echo $this->twig->render("topics.html.twig", array("topics" => $topics, "lang" => $this->lang['admin']));
     }
 
     private function comments(){
 
         $comments = $this->em->getRepository("Comment")->findAll();
-        echo $this->twig->render("comments.html.twig", array("comments" => $comments));
+        echo $this->twig->render("comments.html.twig", array("comments" => $comments, "lang" => $this->lang['admin']));
     }
 
     public function users(){
         $userType = $this->em->getRepository("UserType")->findBy(array("id" => ROLE_USER));
         $users = $this->em->getRepository("User")->findBy(array("type" => $userType));
 
-        echo $this->twig->render("users.html.twig", array("users" => $users));
+        echo $this->twig->render("users.html.twig", array("users" => $users, "lang" => $this->lang['admin']));
     }
 
     public function profile(){
         //$userType = $this->em->getRepository("UserType")->findOneBy(array("id" => ROLE_ADMIN));
         $user = $this->em->getRepository("User")->findOneBy(array("id" => $_SESSION['user']->getId()));
 
-        echo $this->twig->render("profile.html.twig", array("user" => $user));
+        echo $this->twig->render("profile.html.twig", array("user" => $user, "lang" => $this->lang['admin']));
     }
 
 
     public function shared(){
         $topics = $this->em->getRepository("Topic")->findAllByUserType($_SESSION['user']->getId());
 
-        echo $this->twig->render("topics.html.twig", array("topics" => $topics, "admin" => true));
+        echo $this->twig->render("topics.html.twig", array("topics" => $topics, "admin" => true, "lang" => $this->lang['admin']));
     }
 
 } 

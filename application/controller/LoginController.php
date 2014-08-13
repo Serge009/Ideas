@@ -10,7 +10,7 @@ class LoginController extends Controller {
     public function index(){
 
         if(!(isset($_POST['login']) || isset($_POST['pass']))){
-            echo $this->twig->render('login.html.twig');
+            echo $this->twig->render('login.html.twig', array("lang" => $this->lang['login']));
             return;
         }
 
@@ -25,7 +25,8 @@ class LoginController extends Controller {
             $_SESSION['user_type'] = $userType;
             $this->checkAccess($userType);
         } else {
-            echo $this->twig->render('login.html.twig', array('error' => 'Login or Password is incorrect!'));
+
+            echo $this->twig->render('login.html.twig', array('error' => 'Login or Password is incorrect!', "lang" => $this->lang['login']));
         }
     }
 

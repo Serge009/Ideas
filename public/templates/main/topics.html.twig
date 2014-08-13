@@ -40,7 +40,7 @@
                     <span>
                           <i class="glyphicon glyphicon-comment" style="font-size: 14px; margin-right: 10px;"></i>
                           <div style="display: inline-block; float: right; margin-right: 10px;">
-                              {{ topic.commentsCount }}
+                              {{ topic.activeCommentsCount }}
                           </div>
                     </span>
                     </div>
@@ -90,6 +90,7 @@
                 <br>
                 <table class="table">
                     {% for comment in topic.comments %}
+                    {% if comment.deleted == false %}
                     <tr>
                         <td class="author_comment">
                             <span>{{ comment.creator.name ~ ' ' ~ comment.creator.surname }}</span>
@@ -100,6 +101,7 @@
                           </span>
                         </td>
                     </tr>
+                    {% endif %}
                     {% endfor %}
                     <tr>
                         <td class="add_comment" colspan="2">

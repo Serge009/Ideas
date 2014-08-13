@@ -88,6 +88,7 @@
                 <br>
                 <table class="table">
                     {% for comment in topic.comments %}
+                        {% if comment.deleted == false %}
                         <tr>
                             <td class="author_comment">
                                 <span>{{ comment.creator.name ~ ' ' ~ comment.creator.surname }}</span>
@@ -98,6 +99,7 @@
                           </span>
                             </td>
                         </tr>
+                        {% endif %}
                     {% endfor %}
                     <tr>
                         <td class="add_comment" colspan="2">

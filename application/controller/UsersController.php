@@ -15,7 +15,7 @@ class UsersController extends Controller {
     }
 
     public function index(){
-        echo $this->twig->render("newuser.html.twig");
+        echo $this->twig->render("newuser.html.twig", array("lang" => $this->lang['admin']));
     }
 
     public function create(){
@@ -36,7 +36,8 @@ class UsersController extends Controller {
         echo $this->twig->render("newuser.html.twig",
             array(
                 "errors" => $errors,
-                "successes" => $successes
+                "successes" => $successes,
+                "lang" => $this->lang['admin']
             ));
     }
 
@@ -47,7 +48,7 @@ class UsersController extends Controller {
         }
         $user = $this->em->getRepository("User")->findOneBy(array("id" => $id));
 
-        echo $this->twig->render("profile.html.twig", array("user" => $user));
+        echo $this->twig->render("profile.html.twig", array("user" => $user, "lang" => $this->lang['admin']));
     }
 
     public function delete($id){
@@ -88,7 +89,9 @@ class UsersController extends Controller {
             echo $this->twig->render("profile.html.twig", array(
                 "errors" => $errors,
                 "successes" => $successes,
-                "user" => (isset($user) && $user)? $user : $this->getPOSTUserInfo()
+                "user" => (isset($user) && $user)? $user : $this->getPOSTUserInfo(),
+                "lang" => $this->lang['admin']
+
             ));
 
         }

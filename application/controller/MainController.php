@@ -30,7 +30,7 @@ class MainController extends Controller {
     }
 
     public function myTopics(){
-        $topics = $this->em->getRepository("Topic")->findAllByUserId($_SESSION['user']->getId());
+        $topics = $this->em->getRepository("Topic")->findActiveByUserId($_SESSION['user']->getId());
         foreach($topics as $topic){
             $topic->calculateMark();
         }
@@ -38,7 +38,7 @@ class MainController extends Controller {
     }
 
     public function shared(){
-        $topics = $this->em->getRepository("Topic")->findAllByUserType(ROLE_ADMIN);
+        $topics = $this->em->getRepository("Topic")->findActiveByUserType(ROLE_USER);
         echo $this->twig->render("shared.html.twig", array("topics" => $topics));
     }
 

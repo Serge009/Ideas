@@ -4,7 +4,7 @@
 <html>
 
 <head>
-    <title>Sign In</title>
+    <title>{{ lang.title }}</title>
     <meta name="viewport" content="width=device-width">
     <meta charset="utf-8">
     <link rel="stylesheet" href="{{url}}public/css/bootstrap.min.css">
@@ -15,8 +15,8 @@
     <script src="{{url}}public/js/bootstrap.min.js" type="text/javascript"></script>
     <script src="{{url}}public/js/tablesorter.js"></script>
 
-    <link href="//vjs.zencdn.net/4.7/video-js.css" rel="stylesheet">
-    <script src="//vjs.zencdn.net/4.7/video.js"></script>
+    <link href="{{url}}public/css/video-js.css" rel="stylesheet">
+    <script src="{{url}}public/js/video.js"></script>
 
     <script>
         $(document).ready(function(){
@@ -53,6 +53,17 @@
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="{{ url }}admin/?l=en">
+                        <img style="height: 20px;" src="{{ url }}public/img/en.png" />
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ url }}admin/?l=tur">
+                        <img style="height: 20px;" src="{{ url }}public/img/tur.png" />
+                    </a>
+
+                </li>
 
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -62,12 +73,12 @@
                     <ul class="dropdown-menu" role="menu">
                         <li>
                             <a href="{{ url }}users">
-                                <span class="glyphicon glyphicon-user"></span> New User
+                                <span class="glyphicon glyphicon-user"></span> {{ lang.newUser }}
                             </a>
                         </li>
                         <li>
                             <a href="{{ url }}topics/create">
-                                <span class="glyphicon glyphicon-edit"></span> New Topic
+                                <span class="glyphicon glyphicon-edit"></span> {{ lang.newTopic }}
                             </a>
                         </li>
                     </ul>
@@ -80,13 +91,13 @@
                     <ul class="dropdown-menu" role="menu">
                         <li>
                             <a href="{{url}}admin/profile">
-                                <span class="glyphicon glyphicon-cog"></span> Profile
+                                <span class="glyphicon glyphicon-cog"></span> {{ lang.profile }}
                             </a>
                         </li>
                         <li class="divider"></li>
                         <li>
                             <a href="{{url}}logout">
-                            <span class="glyphicon glyphicon-off"></span> Logout
+                            <span class="glyphicon glyphicon-off"></span> {{ lang.logout }}
                             </a>
                         </li>
                     </ul>
@@ -104,18 +115,18 @@
         <ul class="sidebar-nav">
             <li class="sidebar-brand">
                 <a href="{{ url }}">
-                    Admin Panel
+                    {{ lang.adminPanel }}
                 </a>
             </li>
             <li>
-                <a href="{{url}}admin/users">Users</a>
+                <a href="{{url}}admin/users">{{ lang.users }}</a>
             </li>
             <li>
-                <a href="{{url}}admin/topics">Topics</a>
+                <a href="{{url}}admin/topics">{{ lang.topics }}</a>
             </li>
 
             <li>
-                <a href="{{url}}admin/shared">Shared</a>
+                <a href="{{url}}admin/shared">{{ lang.shared }}</a>
             </li>
         </ul>
     </div>

@@ -27,10 +27,10 @@
 
                         {% if topic.deleted %}
                            <i data-link="{{ url }}topics/activate/{{ topic.id }}" class="glyphicon glyphicon-ok topic-status"
-                              data-toggle="tooltip" title="Activate"></i>
+                              data-toggle="tooltip" title="{{ lang.action.activate }}"></i>
                         {% else %}
                             <i data-link="{{ url }}topics/delete/{{ topic.id }}" class="glyphicon glyphicon-remove topic-status"
-                               data-toggle="tooltip" title="Delete"></i>
+                               data-toggle="tooltip" title="{{ lang.action.delete }}"></i>
                         {% endif %}
 
                     </div>
@@ -91,10 +91,10 @@
                                     <td class="comment-action">
                                     {% if comment.deleted %}
                                         <i data-link="{{ url }}comments/activate/{{ comment.id }}" class="glyphicon glyphicon-ok comment-status"
-                                           data-toggle="tooltip" title="Change status"></i>
+                                           data-toggle="tooltip" title="{{ lang.tooltips.changeStatus }}"></i>
                                     {% else %}
                                         <i data-link="{{ url }}comments/delete/{{ comment.id }}" class="glyphicon glyphicon-remove comment-status"
-                                           data-toggle="tooltip" title="Change status"></i>
+                                           data-toggle="tooltip" title="{{ lang.tooltips.changeStatus }}"></i>
                                     {% endif %}
                                     </td>
                                 </tr>
