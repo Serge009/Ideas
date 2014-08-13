@@ -9,7 +9,7 @@
 class MainController extends Controller {
 
     protected function setOptions(){
-        $this->smarty = new Smarty();
+        //$this->smarty = new Smarty();
         $this->loader = new Twig_Loader_Filesystem("public/templates/main");
         $this->twig = new Twig_Environment($this->loader);
     }
@@ -26,7 +26,20 @@ class MainController extends Controller {
         foreach($topics as $topic){
             $topic->calculateMark();
         }
+        $this->setUserMark($topics);
         echo $this->twig->render("topics.html.twig", array("topics" => $topics));
+    }
+
+    private function setUserMark($topics){
+        $votes = $this->em->getRepository("Vote")->findAllByUserId($_SESSION['user']->getId());
+        foreach($topics as $topic){
+            foreach($votes as $vote){
+                if($vote->getTopic()->getId() == $topic->getId()){
+                    $topic->setUserMark($vote->getMark());
+                    break;
+                }
+            }
+        }
     }
 
     public function myTopics(){
@@ -34,11 +47,12 @@ class MainController extends Controller {
         foreach($topics as $topic){
             $topic->calculateMark();
         }
+        $this->setUserMark($topics);
         echo $this->twig->render("mytopics.html.twig", array("topics" => $topics));
     }
 
     public function shared(){
-        $topics = $this->em->getRepository("Topic")->findActiveByUserType(ROLE_USER);
+        $topics = $this->em->getRepository("Topic")->findActiveByUserType(ROLE_ADMIN);
         echo $this->twig->render("shared.html.twig", array("topics" => $topics));
     }
 

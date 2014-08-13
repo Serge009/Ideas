@@ -9,7 +9,7 @@
 class AdminController extends Controller {
 
     protected function setOptions(){
-        $this->smarty = new Smarty();
+        //$this->smarty = new Smarty();
         $this->loader = new Twig_Loader_Filesystem("public/templates/admin");
         $this->twig = new Twig_Environment($this->loader);
     }

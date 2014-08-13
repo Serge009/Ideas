@@ -93,6 +93,29 @@ class Topic {
      */
     private $commentsCount;
 
+    /**
+     * @var integer
+     */
+    private $userMark = 0;
+
+    /**
+     * @param int $userMark
+     */
+    public function setUserMark($userMark)
+    {
+        $this->userMark = $userMark;
+    }
+
+    /**
+     * @return int
+     */
+    public function getUserMark()
+    {
+        return $this->userMark;
+    }
+
+
+
 
     /**
      * @param float $mark

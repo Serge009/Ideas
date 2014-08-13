@@ -8,7 +8,7 @@
 
 /**
  * Class Vote
- * @Entity
+ * @Entity(repositoryClass="VoteRepository")
  * @Table(name="votes")
  */
 class Vote {

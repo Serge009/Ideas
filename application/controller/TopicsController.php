@@ -11,7 +11,7 @@ class TopicsController extends Controller {
     public static $SUPPORTED_VIDEO_FORMATS = array("video/mp4", "video/webm", "video/ogg");
 
     protected function setOptions(){
-        $this->smarty = new Smarty();
+        //$this->smarty = new Smarty();
         $this->loader = new Twig_Loader_Filesystem("public/templates/admin");
         $this->twig = new Twig_Environment($this->loader);
     }

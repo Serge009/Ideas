@@ -22,7 +22,7 @@ class TopicRepository extends EntityRepository
     public function findAllByUserId($id = 0){
         //$qb = $this->getEntityManager()->createQueryBuilder("t");
         $query = $this->getEntityManager()
-            ->createQuery("SELECT t FROM Topic t JOIN t.creator c WHERE c.id = :id")
+            ->createQuery("SELECT t FROM Topic t JOIN t.creator c WHERE c.id = :id  ORDER BY t.id")
             ->setParameter("id", $id);
 
         $topics = $query->execute();
@@ -48,7 +48,7 @@ class TopicRepository extends EntityRepository
 
     public function findActiveByUserId($id = 0){
         $query = $this->getEntityManager()
-            ->createQuery("SELECT t FROM Topic t JOIN t.creator c WHERE c.id = :id AND t.deleted = false")
+            ->createQuery("SELECT t FROM Topic t JOIN t.creator c WHERE c.id = :id AND t.deleted = false  ORDER BY t.id")
             ->setParameter("id", $id);
 
         $topics = $query->execute();
