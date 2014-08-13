@@ -80,8 +80,8 @@ class MainController extends Controller {
                     $this->em->persist($comment);
                     $this->em->flush();
                     $res['status'] = true;
-                    $res['name'] = $_SESSION['user']->getName;
-                    $res['surname'] = $_SESSION['user']->getSurname;
+                    $res['name'] = $_SESSION['user']->getName();
+                    $res['surname'] = $_SESSION['user']->getSurname();
                     echo json_encode($res);
                 } catch (Exception $e){
                     //var_dump($e);
@@ -107,10 +107,15 @@ class MainController extends Controller {
                     $mark = ($_POST['mark'] <= 10 || $_POST['mark'] >= 0) ? intval($_POST['mark']) : 0;
                     $creator = $this->em->getRepository('User')->findOneBy(array("id" => $_SESSION['user']->getId()));
                     $topic = $this->em->getRepository('Topic')->findOneBy(array("id" => intval($_POST['topic'])));
-                    $vote = new Vote();
-                    $vote->setUser($creator)
-                        ->setMark($mark)
-                        ->setTopic($topic);
+                    $vote = $this->em->getRepository("Vote")->findOneBy(array("user" => $creator, "topic" => $topic));
+                    if(!$vote){
+                        $vote = new Vote();
+                        $vote->setUser($creator)
+                            ->setTopic($topic);
+                    }
+
+                    $vote->setMark($mark);
+
 
 
                     $this->em->persist($vote);
