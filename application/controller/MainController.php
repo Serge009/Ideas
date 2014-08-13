@@ -27,20 +27,10 @@ class MainController extends Controller {
             $topic->calculateMark();
         }
         $this->setUserMark($topics);
-        echo $this->twig->render("topics.html.twig", array("topics" => $topics));
+        echo $this->twig->render("topics.html.twig", array("topics" => $topics, "lang" => $this->lang['main']));
     }
 
-    private function setUserMark($topics){
-        $votes = $this->em->getRepository("Vote")->findAllByUserId($_SESSION['user']->getId());
-        foreach($topics as $topic){
-            foreach($votes as $vote){
-                if($vote->getTopic()->getId() == $topic->getId()){
-                    $topic->setUserMark($vote->getMark());
-                    break;
-                }
-            }
-        }
-    }
+
 
     public function myTopics(){
         $topics = $this->em->getRepository("Topic")->findActiveByUserId($_SESSION['user']->getId());
@@ -240,5 +230,17 @@ class MainController extends Controller {
         }
 
         return $type;
+    }
+
+    private function setUserMark($topics){
+        $votes = $this->em->getRepository("Vote")->findAllByUserId($_SESSION['user']->getId());
+        foreach($topics as $topic){
+            foreach($votes as $vote){
+                if($vote->getTopic()->getId() == $topic->getId()){
+                    $topic->setUserMark($vote->getMark());
+                    break;
+                }
+            }
+        }
     }
 } 
