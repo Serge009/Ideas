@@ -1,0 +1,64 @@
+{
+    "login": {
+        "login": "Login",
+        "pass": "Password",
+        "btnLogin": "Sign In"
+    },
+
+    "admin": {
+        "title" : "Tur Admin Panel",
+        "users": "Users",
+        "topics": "Topics",
+        "shared": "Shared",
+        "adminPanel": "Admin Panel",
+        "user": {
+            "name": "Name",
+            "surname": "Surname",
+            "login": "Login",
+            "password": "Password",
+            "type": "Type",
+            "status": "Status",
+            "action": "Action",
+            "btnCreate" : "Create",
+            "btnUpdate" : "Update"
+        },
+        "action": {
+            "delete": "Delete",
+            "activate": "Activate"
+        },
+        "status": {
+            "active": "Active",
+            "deleted": "Deleted"
+        },
+        "newUser" : "New User",
+        "newTopic" : "New Topic",
+        "profile" : "Profile",
+        "logout" : "Logout",
+        "topic" : {
+            "title" : "Title",
+            "msg" : "Message",
+            "btnCreate" : "Create",
+            "btnFile" : "File",
+            "selectType" : "Select Type",
+            "btnPicture" : "Picture",
+            "btnVideo" : "Video",
+            "btnLocal" : "Local",
+            "btnLink" : "Link",
+            "selectVideoSrc" : "Select Video Source",
+            "selectPictureSrc" : "Select Picture Source",
+            "notValidUrl" : "Not Valid Url",
+            "videoTypeNotSupported" : "Sorry! This format not supported yet!",
+            "putLinkBellow" : "Put Link bellow",
+            "btnSave" : "Save",
+            "btnClose" : "Close"
+        },
+        "tooltips" : {
+            "changeStatus" : "Change status"
+        }
+
+    },
+
+    "main": {
+
+    }
+}

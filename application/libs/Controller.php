@@ -24,8 +24,11 @@ class Controller
      */
     protected $smarty;
 
+    protected $lang;
+
     function __construct(EntityManager $em)
     {
+        $this->lang = json_decode(file_get_contents($this->getLang()), true);
         $this->em = $em;
         $this->setOptions();
     }
@@ -59,5 +62,34 @@ class Controller
         }
 
         exit;
+    }
+
+
+    protected function getLang(){
+        //echo $_GET['l'];
+        $lang = 'lang/en/library.json';
+        if (!isset($_COOKIE['lang'])) {
+            setcookie("lang", "english");
+        } else if (isset($_GET['l'])) {
+             switch ($_GET['l']) {
+                case "tur":
+                    setcookie("lang", "turkish");
+                    $lang = 'lang/tr/library.json';
+                    break;
+                default :
+                    setcookie("lang", "english");
+                    break;
+            }
+        } else {
+            switch ($_COOKIE['lang']) {
+                case "turkish":
+                    $lang = 'lang/tr/library.json';
+                    break;
+                default :
+                    break;
+            }
+        }
+
+        return "application/" . $lang;
     }
 }

@@ -20,7 +20,7 @@ class TopicsController extends Controller {
 
         $topics = $this->em->getRepository("Topic")->findAllByUserType(ROLE_USER);
 
-        echo $this->twig->render("topics.html.twig", array("topics" => $topics));
+        echo $this->twig->render("topics.html.twig", array("topics" => $topics, "lang" => $this->lang['admin']));
     }
 
     public function create(){
@@ -37,7 +37,7 @@ class TopicsController extends Controller {
         }
 
         if($_SESSION['user_type'] == ROLE_ADMIN)
-            echo $this->twig->render("newtopic.html.twig", array("errors" => $errors, "successes" => $success, "videoFormats" => self::$SUPPORTED_VIDEO_FORMATS));
+            echo $this->twig->render("newtopic.html.twig", array("errors" => $errors, "successes" => $success, "videoFormats" => self::$SUPPORTED_VIDEO_FORMATS, "lang" => $this->lang['admin']));
     }
 
     private function createTopic(){

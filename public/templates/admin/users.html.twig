@@ -8,13 +8,12 @@
     <table id="users" class="table table-striped table-hover tablesorter sorted-table">
         <thead>
         <tr>
-            <th>Name</th>
-            <th>Surname</th>
-            <th>Login</th>
-            <th>Password</th>
-            <th>Type</th>
-            <th>Status</th>
-            <th>Action</th>
+            <th>{{ lang.user.name }}</th>
+            <th>{{ lang.user.surname }}</th>
+            <th>{{ lang.user.login }}</th>
+            <th>{{ lang.user.type }}</th>
+            <th>{{ lang.user.status }}</th>
+            <th>{{ lang.user.action }}</th>
         </tr>
         </thead>
         <tbody>
@@ -23,19 +22,20 @@
                 <td>{{ user.name }}</td>
                 <td>{{ user.surname }}</td>
                 <td>{{ user.login }}</td>
-                <td>{{ user.pass }}</td>
                 <td>{{ user.type.type }}</td>
                 <td>
-                    <span class="label label-{% if user.deleted %}danger">Deleted{% else %}success">Active{% endif %}
+                    <span class="label label-{% if user.deleted %}danger">{{ lang.status.deleted }}{% else %}success">{{ lang.status.active }}{% endif %}
                     </span>
                 </td>
                 <td>
                     {% if user.deleted %}
-                        <a href="{{ url }}users/activate/{{ user.id }}">
+                        <a href="{{ url }}users/activate/{{ user.id }}"
+                           data-toggle="tooltip" title="{{ lang.action.activate }}">
                             <i class="glyphicon glyphicon-ok"></i>
                         </a>
                     {% else %}
-                        <a href="{{ url }}users/delete/{{ user.id }}">
+                        <a href="{{ url }}users/delete/{{ user.id }}"
+                           data-toggle="tooltip" title="{{ lang.action.delete }}">
                             <i class="glyphicon glyphicon-remove"></i>
                         </a>
                     {% endif %}

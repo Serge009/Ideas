@@ -17,7 +17,7 @@ class LoginModel extends Model {
     /**
      * @param $login
      * @param $pass
-     * @return bool
+     * @return User | boolean
      * @throws ModelException
      */
     public function login($login, $pass)
@@ -26,11 +26,13 @@ class LoginModel extends Model {
             $this->db = Connection::getConnection();
 
             //$sql = "SELECT COUNT(id) AS res  FROM users WHERE email = :email AND password = MD5(CONCAT(salt, MD5(:pass)))";
-            $sql = "SELECT COUNT(id) AS res  FROM users WHERE login = :login AND password = :pass";
+            $sql = "SELECT *  FROM users WHERE login = :login AND password = :pass LIMIT 1";
             $query = $this->db->prepare($sql);
+            $query->setFetchMode(PDO::FETCH_CLASS, 'User');
             $query->execute(array(":login" => $login, ":pass" => $pass));
 
-            if($query->fetch()->res > 0){
+            if($res = $query->fetch()){
+                var_dump($res);
                 return true;
             }
             return false;
@@ -38,4 +40,4 @@ class LoginModel extends Model {
             throw new ModelException($e->getMessage(), $e->getCode(), $e);
         }
     }
-} 
+}
