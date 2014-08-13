@@ -19,6 +19,8 @@ $(document).ready(function() {
     $(document).on("tap", ".evaluate_star i", function() {
         var mark = +$(this).attr("mark");
 
+        changeClassStar($(this));
+
         if($.inArray(mark, mass_mark) == -1) {
             return;
         }
@@ -78,11 +80,29 @@ function sendDataVote(mark, id_topic) {
         },
         success: function(responce) {
             if(responce == 1) {
-                alert("Your vote took");
+                //alert("Your vote took");
             }
             if(responce == 0) {
                 alert("Error!");
             }
         }
+    });
+}
+
+function changeClassStar(elem) {
+    var i = $(elem).closest(".evaluate_star").find("i");
+    var index_elem = $(i).index($(elem));
+    //alert(index_elem);
+    var i_full = $(i).slice(0, index_elem + 1);
+    $.each(i_full, function(index, value) {
+        $(value).addClass("full");
+    });
+
+    var i_empty = $(i).slice(index_elem + 1);
+    $.each(i_empty, function(index, value) {
+        if($(value).hasClass("full")) {
+            $(value).removeClass("full");
+        }
+        $(value).addClass("empty");
     });
 }
