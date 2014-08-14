@@ -2,7 +2,8 @@
     "login": {
         "login": "Login",
         "pass": "Password",
-        "btnLogin": "Sign In"
+        "btnLogin": "Sign In",
+        "text" : "Nutricia için inovatif fikirlerini paylaş ve gelişme katkıda bulun! "
     },
 
     "admin": {
@@ -99,6 +100,25 @@
         "content_topics": {
             "vote": "Vote",
             "placeholder_comment": "Your comment..."
+        },
+
+        "time" : {
+            "years" : "years",
+            "year" : "year",
+            "months" : "months",
+            "month" : "month",
+            "weeks" : "weeks",
+            "week" : "week",
+            "days" : "days",
+            "day" : "day",
+            "hours" : "hours",
+            "hour" : "hour",
+            "minutes" : "minutes",
+            "minute" : "minute",
+            "seconds" : "seconds",
+            "second" : "second",
+            "postedJustNow" : "posted just now",
+            "ago" : "ago"
         }
     }
 }

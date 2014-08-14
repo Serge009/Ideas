@@ -26,9 +26,12 @@ class Controller
 
     protected $lang;
 
+    public static $language;
+
     function __construct(EntityManager $em)
     {
         $this->lang = json_decode(file_get_contents($this->getLang()), true);
+        self::$language = $this->lang;
         $this->em = $em;
         $this->setOptions();
     }
@@ -67,7 +70,7 @@ class Controller
 
     protected function getLang(){
         //echo $_GET['l'];
-        $lang = 'lang/en/library.json';
+        $lang = 'lang/tr/library.json';
         if (!isset($_COOKIE['lang'])) {
             setcookie("lang", "english");
         } else if (isset($_GET['l'])) {

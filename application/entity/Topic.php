@@ -409,9 +409,10 @@ class Topic {
     /**
      * TODO: translate
      * @param int $granularity
+     * @param array $lang
      * @return null|string
      */
-    private function timeAgo($granularity=1) {
+    private function timeAgo($granularity=1, array $lang) {
         $date = ($this->date_created) ? $this->date_created->getTimestamp () : time();
         $difference = time() - $date;
         $periods = array('decade' => 315360000,
@@ -423,7 +424,7 @@ class Topic {
             'minute' => 60,
             'second' => 1);
         if ($difference < 5) { // less than 5 seconds ago, let's say "just now"
-            $retval = "posted just now";
+            $retval = $lang['postedJustNow'];
             return $retval;
         } else {
             $retval = null;
@@ -432,12 +433,12 @@ class Topic {
                     $time = floor($difference/$value);
                     $difference %= $value;
                     $retval .= ($retval ? ' ' : '').$time.' ';
-                    $retval .= (($time > 1) ? $key.'s' : $key);
+                    $retval .= (($time > 1) ? $lang[$key.'s'] : $lang[$key]);
                     $granularity--;
                 }
                 if ($granularity == '0') { break; }
             }
-            return ($retval) ? $retval.' ago' : "";
+            return ($retval) ? $retval.' ' . $lang['ago'] : "";
         }
     }
 
@@ -446,8 +447,8 @@ class Topic {
      */
     public function getTimeAgo()
     {
-        if(!$this->timeAgo){
-            $this->timeAgo = $this->timeAgo();
+        if(!$this->timeAgo && isset(Controller::$language['time'])){
+            $this->timeAgo = $this->timeAgo(1, Controller::$language['time']);
         }
         return $this->timeAgo;
     }

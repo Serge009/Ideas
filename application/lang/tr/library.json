@@ -1,104 +1,128 @@
 {
     "login": {
-        "login": "Login",
-        "pass": "Password",
-        "btnLogin": "Sign In"
+        "login": "Giriş",
+        "pass": "Parola",
+        "btnLogin": "Giriş",
+        "text" : "Nutricia için inovatif fikirlerini paylaş ve gelişme katkıda bulun! "
     },
 
     "admin": {
-        "title" : "Tur Admin Panel",
-        "users": "Users",
-        "topics": "Topics",
-        "shared": "Shared",
-        "adminPanel": "Admin Panel",
+        "title" : "Yönetici Panel Türü",
+        "users": "Kullanıcılar",
+        "topics": "Konular",
+        "shared": "Paylaşım",
+        "adminPanel": "Yönetyici Paneli",
         "user": {
-            "name": "Name",
-            "surname": "Surname",
-            "login": "Login",
-            "password": "Password",
-            "type": "Type",
-            "status": "Status",
-            "action": "Action",
-            "btnCreate" : "Create",
-            "btnUpdate" : "Update"
+            "name": "İsim",
+            "surname": "Soy isim",
+            "login": "Giriş",
+            "password": "Parola",
+            "type": "Tür",
+            "status": "Durum",
+            "action": "Aksiyon",
+            "btnCreate" : "Yarat",
+            "btnUpdate" : "Güncelle"
         },
         "action": {
-            "delete": "Delete",
-            "activate": "Activate"
+            "delete": "Sil",
+            "activate": "Aktive Et"
         },
         "status": {
-            "active": "Active",
-            "deleted": "Deleted"
+            "active": "Aktif",
+            "deleted": "Silinmiş"
         },
-        "newUser" : "New User",
-        "newTopic" : "New Topic",
-        "profile" : "Profile",
-        "logout" : "Logout",
+        "newUser" : "Yeni Kullanıcı",
+        "newTopic" : "Yeni Konu",
+        "profile" : "Profil",
+        "logout" : "Çıkış",
         "topic" : {
-            "title" : "Title",
-            "msg" : "Message",
-            "btnCreate" : "Create",
-            "btnFile" : "File",
-            "selectType" : "Select Type",
-            "btnPicture" : "Picture",
+            "title" : "Başlık",
+            "msg" : "Mesaj",
+            "btnCreate" : "Yarat",
+            "btnFile" : "Dosya",
+            "selectType" : "Tür Seç",
+            "btnPicture" : "Resim",
             "btnVideo" : "Video",
-            "btnLocal" : "Local",
+            "btnLocal" : "Lokal",
             "btnLink" : "Link",
-            "selectVideoSrc" : "Select Video Source",
-            "selectPictureSrc" : "Select Picture Source",
-            "notValidUrl" : "Not Valid Url",
-            "videoTypeNotSupported" : "Sorry! This format not supported yet!",
-            "putLinkBellow" : "Put Link bellow",
-            "btnSave" : "Save",
-            "btnClose" : "Close"
+            "selectVideoSrc" : "Video Kaynağı Seç",
+            "selectPictureSrc" : "Resim Kaynağı Seç",
+            "notValidUrl" : "Geçersiz URL",
+            "videoTypeNotSupported" : "Bu format desteklenmiyor!",
+            "putLinkBellow" : "Link i aşağı kopyalayın",
+            "btnSave" : "Sakla",
+            "btnClose" : "Kapat"
         },
         "tooltips" : {
-            "changeStatus" : "Change status"
+            "changeStatus" : "Durum Değiştir"
         }
 
     },
 
     "main": {
         "title" : "BirFikrimVar",
-        "all_topics": "All topics",
-        "my_topics": "My topics",
-        "admin_topics": "Admin topics",
+        "all_topics": "Fikir Kutusu",
+        "dd" : "Bütün Konular",
+        "my_topics": "Fikirlerim",
+        "dd":"Konularım",
+        "admin_topics": "Paylaşimlar",
         "sort": {
-            "time": "Sort time",
-            "mark_star": "Sort mark",
-            "count_comment": "Sort comment"
+            "time": "Tarihe Göre",
+            "mark_star": "Puana Göre",
+            "dd" : "Popülerliğe göre",
+            "count_comment": "Çok Konuşulanlar",
+            "dd" : "Yorum sayısına göre"
         },
         "admin": {
-            "name": "Admin title",
+            "name": "Alican Tatli",
             "title": "Bussiness Administrator"
         },
         "new_topic": {
-            "title": "Title",
-            "message": "Type msg!",
-            "add_media": "Add media",
-            "error": "Error!",
-            "success": "Success!"
+            "title": "Başlık",
+            "message": "Mesaj",
+            "add_media": "Media Ekle",
+            "error": "Hata!",
+            "success": "Başarıldı!"
         },
         "button": {
-            "send": "Send",
-            "picture": "Picture",
+            "send": "Devam",
+            "picture": "Resim",
             "video": "Video",
-            "local": "Local",
+            "local": "Lokal",
             "link": "Link",
-            "save": "Save"
+            "save": "Sakla"
         },
         "modal_window": {
-            "close": "Close",
-            "select_type": "Select Type",
-            "video_src": "Select video src",
-            "picture_src": "Select picture src",
-            "put_link": "Put link bellow",
-            "not_valid_url": "Not valid url!",
-            "message_support": "Sorry! This format not supported yet!"
+            "close": "Kapat",
+            "select_type": "Tür Seç",
+            "video_src": "Video Kaynağı Seç",
+            "picture_src": "Resim Kaynağı Seç",
+            "put_link": "Link i aşağı kopyalayın",
+            "not_valid_url": "Geçersiz URL",
+            "message_support": "Bu format desteklenmiyor!"
         },
         "content_topics": {
-            "vote": "Vote",
-            "placeholder_comment": "Your comment..."
+            "vote": "Puan ver",
+            "placeholder_comment": "Yorum Yap..."
         }
+    },
+
+    "time" : {
+        "years" : "Yıl",
+        "year" : "Yıl",
+        "months" : "Ay",
+        "month" : "Ay",
+        "weeks" : "Hafta",
+        "week" : "Hafta",
+        "days" : "Gün",
+        "day" : "Gün",
+        "hours" : "Saat",
+        "hour" : "Saat",
+        "minutes" : "Dakika",
+        "minute" : "Dakika",
+        "seconds" : "Saniye",
+        "second" : "Saniye",
+        "postedJustNow" : "Biraz önce gönderilen",
+        "ago" : "Önce"
     }
 }

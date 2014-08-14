@@ -27,7 +27,7 @@ class MainController extends Controller {
             $topic->calculateMark();
         }
         $this->setUserMark($topics);
-        echo $this->twig->render("topics.html.twig", array("topics" => $topics, "lang" => $this->lang['main']));
+        echo $this->twig->render("topics.html.twig", array("topics" => $topics, "lang" => $this->lang['main'], "user" => $_SESSION['user']));
     }
 
 
@@ -38,12 +38,12 @@ class MainController extends Controller {
             $topic->calculateMark();
         }
         $this->setUserMark($topics);
-        echo $this->twig->render("mytopics.html.twig", array("topics" => $topics, "lang" => $this->lang['main']));
+        echo $this->twig->render("mytopics.html.twig", array("topics" => $topics, "lang" => $this->lang['main'], "user" => $_SESSION['user']));
     }
 
     public function shared(){
         $topics = $this->em->getRepository("Topic")->findActiveByUserType(ROLE_ADMIN);
-        echo $this->twig->render("shared.html.twig", array("topics" => $topics, "lang" => $this->lang['main']));
+        echo $this->twig->render("shared.html.twig", array("topics" => $topics, "lang" => $this->lang['main'], "user" => $_SESSION['user']));
     }
 
     public function createTopic(){
@@ -63,7 +63,8 @@ class MainController extends Controller {
             echo $this->twig->render("newtopic.html.twig", array("errors" => $errors,
                                                                  "successes" => $success,
                                                                  "videoFormats" => TopicsController::$SUPPORTED_VIDEO_FORMATS,
-                                                                 "lang" => $this->lang['main']));
+                                                                 "lang" => $this->lang['main'],
+                                                                 "user" => $_SESSION['user']));
     }
 
     //$.post('/ideas/main/createComment', {"topic": 10, "comment": "sdfsdfsdfsdfsdfsdf"})
