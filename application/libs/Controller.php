@@ -70,7 +70,7 @@ class Controller
 
     protected function getLang(){
         //echo $_GET['l'];
-        $lang = 'lang/tr/library.json';
+        $lang = 'lang/tur/library.json';
         if (!isset($_COOKIE['lang'])) {
             setcookie("lang", "english");
         } else if (isset($_GET['l'])) {
@@ -93,6 +93,7 @@ class Controller
             }
         }
 
-        return "application/" . $lang;
+//        return "application/" . $lang;
+        return "application/lang/en/library.json";
     }
 }
