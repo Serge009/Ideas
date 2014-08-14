@@ -1,12 +1,12 @@
 {% extends "main.html.twig" %}
 {% block menu %}
     <ul>
-        <li><a href="{{ url }}"><span> <i
-                            class="glyphicon glyphicon-facetime-video"></i> &nbsp;Fikir Kutusu</span></a></li>
-        <li><a  href="{{ url }}main/mytopics"><span> <i class="glyphicon glyphicon-book"></i> &nbsp;Fikir lerim</span></a>
+        <li><a href="{{ url }}main/topics"><span> <i
+                            class="glyphicon glyphicon-facetime-video"></i> &nbsp;{{ lang.all_topics }}</span></a></li>
+        <li><a href="{{ url }}main/mytopics"><span> <i class="glyphicon glyphicon-book"></i> &nbsp;{{ lang.my_topics }}</span></a>
         </li>
         <li><a class="menu-active" href="{{ url }}main/shared"><span> <i
-                            class="glyphicon glyphicon-bookmark"></i> &nbsp;Pey Lasimral</span></a></li>
+                            class="glyphicon glyphicon-bookmark"></i> &nbsp;{{ lang.admin_topics }}</span></a></li>
     </ul>
 {% endblock %}
 {% block content %}

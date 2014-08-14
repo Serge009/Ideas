@@ -3,17 +3,17 @@
     {% for error in errors %}
         <div class="alert alert-danger alert-dismissible" role="alert">
             <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span>
-                <span class="sr-only">Close</span>
+                <span class="sr-only">{{ lang.modal_window.close }}</span>
             </button>
-            <strong>Error!</strong> {{ error }}
+            <strong>{{ lang.new_topic.error }}</strong> {{ error }}
         </div>
     {% endfor %}
     {% for success in successes %}
         <div class="alert alert-success alert-dismissible" role="alert">
             <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span>
-                <span class="sr-only">Close</span>
+                <span class="sr-only">{{ lang.modal_window.close }}</span>
             </button>
-            <strong>Success!</strong> {{ success }}
+            <strong>{{ lang.new_topic.success }}</strong> {{ success }}
         </div>
     {% endfor %}
     <!--
@@ -52,9 +52,9 @@
     <div style="width: 100%; display: inline-block;">
         <form id="new-topic-form" method="post" action="{{ url }}main/createTopic" enctype="multipart/form-data">
             <input type="text" required="" name="topic-title" id="input-title"
-                   placeholder="Title" style="width: 90%; height: 35px; margin-top: 10px;">
+                   placeholder="{{ lang.new_topic.title }}" style="width: 90%; height: 35px; margin-top: 10px;">
             <textarea required="" name="topic-msg" id="input-msg"
-                      placeholder="Type msg!" rows="10" style="width: 90%; margin-top: 15px;"></textarea><br>
+                      placeholder="{{ lang.new_topic.message }}" rows="10" style="width: 90%; margin-top: 15px;"></textarea><br>
 
             <input id="topic-input-file" type="file" class="hidden" name="topic-file"/>
             <input id="topic-input-link" type="text" class="hidden" name="topic-link"/>
@@ -65,11 +65,11 @@
                  data-toggle="modal" data-target="#topic-file">
                         <span style="height: 100%; display: block; position: relative;">
                             <i class="glyphicon glyphicon-picture" style="font-size: 32px; color: #9966CC;"></i>
-                            <span style="position: relative; bottom: 5px;" id="name_file">Fotograf yukle
+                            <span style="position: relative; bottom: 5px;" id="name_file">{{ lang.new_topic.add_media }}
                             </span>
                         </span>
             </div>
-            <input type="submit" value="Devam" class="send" style="float: right; margin-right: 5%; margin-top: 5px;">
+            <input type="submit" value="{{ lang.button.send }}" class="send" style="float: right; margin-right: 5%; margin-top: 5px;">
         </form>
     </div>
 
@@ -78,17 +78,17 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal"><span
-                                aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                    <h4 class="modal-title">Select type</h4>
+                                aria-hidden="true">&times;</span><span class="sr-only">{{ lang.modal_window.close }}</span></button>
+                    <h4 class="modal-title">{{ lang.modal_window.select_type }}</h4>
                 </div>
                 <div class="modal-footer">
                     <button id="type-picture-btn" type="button" class="btn btn-default" data-dismiss="modal"
                             data-toggle="modal" data-target="#topic-picture-modal">
-                        Picture
+                        {{ lang.button.picture }}
                     </button>
                     <button id="type-video-btn" type="button" class="btn btn-default" data-dismiss="modal"
                             data-toggle="modal" data-target="#topic-video-modal">
-                        Video
+                        {{ lang.button.video }}
                     </button>
                 </div>
             </div>
@@ -100,14 +100,14 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal"><span
-                                aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                    <h4 class="modal-title">Select video src</h4>
+                                aria-hidden="true">&times;</span><span class="sr-only">{{ lang.modal_window.close }}</span></button>
+                    <h4 class="modal-title">{{ lang.modal_window.video_src }}</h4>
                 </div>
                 <div class="modal-footer">
-                    <button id="local-video" type="button" class="btn btn-default" data-dismiss="modal">Local</button>
+                    <button id="local-video" type="button" class="btn btn-default" data-dismiss="modal">{{ lang.button.local }}</button>
                     <button type="button" class="btn btn-default" data-dismiss="modal" data-toggle="modal"
                             data-target="#topic-link-modal">
-                        Link
+                        {{ lang.button.link }}
                     </button>
                 </div>
             </div>
@@ -119,14 +119,14 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal"><span
-                                aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                    <h4 class="modal-title">Select picture src</h4>
+                                aria-hidden="true">&times;</span><span class="sr-only">{{ lang.modal_window.close }}</span></button>
+                    <h4 class="modal-title">{{ lang.modal_window.picture_src }}</h4>
                 </div>
                 <div class="modal-footer">
-                    <button id="local-picture" type="button" class="btn btn-default" data-dismiss="modal">Local</button>
+                    <button id="local-picture" type="button" class="btn btn-default" data-dismiss="modal">{{ lang.button.local }}</button>
                     <button type="button" class="btn btn-default" data-dismiss="modal" data-toggle="modal"
                             data-target="#topic-link-modal">
-                        Link
+                        {{ lang.button.link }}
                     </button>
                 </div>
             </div>
@@ -138,19 +138,19 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal"><span
-                                aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                    <h4 class="modal-title">Put link bellow</h4>
+                                aria-hidden="true">&times;</span><span class="sr-only">{{ lang.modal_window.close }}</span></button>
+                    <h4 class="modal-title">{{ lang.modal_window.put_link }}</h4>
                 </div>
                 <div class="modal-body">
                     <div id="not-valid-url-msg" class="alert alert-danger hidden" role="alert">
                         <button type="button" class="close"><span aria-hidden="true">&times;</span><span
-                                    class="sr-only">Close</span></button>
-                        Not valid url!
+                                    class="sr-only">{{ lang.modal_window.close }}</span></button>
+                        {{ lang.modal_window.not_valid_url }}
                     </div>
                     <input id="file-link" type="text" class="form-control"/>
                 </div>
                 <div class="modal-footer">
-                    <button id="save-link" type="button" class="btn btn-default" data-dismiss="modal">Save</button>
+                    <button id="save-link" type="button" class="btn btn-default" data-dismiss="modal">{{ lang.button.save }}</button>
                 </div>
             </div>
         </div>
@@ -161,12 +161,12 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal"><span
-                                aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                    <h4 class="modal-title">Sorry! This format not supported yet!</h4>
+                                aria-hidden="true">&times;</span><span class="sr-only">{{ lang.modal_window.close }}</span></button>
+                    <h4 class="modal-title">{{ lang.modal_window.message_support }}</h4>
                 </div>
 
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">{{ lang.modal_window.close }}</button>
                 </div>
             </div>
         </div>

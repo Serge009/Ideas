@@ -38,12 +38,12 @@ class MainController extends Controller {
             $topic->calculateMark();
         }
         $this->setUserMark($topics);
-        echo $this->twig->render("mytopics.html.twig", array("topics" => $topics));
+        echo $this->twig->render("mytopics.html.twig", array("topics" => $topics, "lang" => $this->lang['main']));
     }
 
     public function shared(){
         $topics = $this->em->getRepository("Topic")->findActiveByUserType(ROLE_ADMIN);
-        echo $this->twig->render("shared.html.twig", array("topics" => $topics));
+        echo $this->twig->render("shared.html.twig", array("topics" => $topics, "lang" => $this->lang['main']));
     }
 
     public function createTopic(){
@@ -60,7 +60,10 @@ class MainController extends Controller {
         }
 
         if($_SESSION['user_type'] == ROLE_USER)
-            echo $this->twig->render("newtopic.html.twig", array("errors" => $errors, "successes" => $success, "videoFormats" => TopicsController::$SUPPORTED_VIDEO_FORMATS));
+            echo $this->twig->render("newtopic.html.twig", array("errors" => $errors,
+                                                                 "successes" => $success,
+                                                                 "videoFormats" => TopicsController::$SUPPORTED_VIDEO_FORMATS,
+                                                                 "lang" => $this->lang['main']));
     }
 
     //$.post('/ideas/main/createComment', {"topic": 10, "comment": "sdfsdfsdfsdfsdfsdf"})

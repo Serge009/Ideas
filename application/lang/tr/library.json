@@ -59,6 +59,46 @@
     },
 
     "main": {
-
+        "title" : "BirFikrimVar",
+        "all_topics": "All topics",
+        "my_topics": "My topics",
+        "admin_topics": "Admin topics",
+        "sort": {
+            "time": "Sort time",
+            "mark_star": "Sort mark",
+            "count_comment": "Sort comment"
+        },
+        "admin": {
+            "name": "Admin title",
+            "title": "Bussiness Administrator"
+        },
+        "new_topic": {
+            "title": "Title",
+            "message": "Type msg!",
+            "add_media": "Add media",
+            "error": "Error!",
+            "success": "Success!"
+        },
+        "button": {
+            "send": "Send",
+            "picture": "Picture",
+            "video": "Video",
+            "local": "Local",
+            "link": "Link",
+            "save": "Save"
+        },
+        "modal_window": {
+            "close": "Close",
+            "select_type": "Select Type",
+            "video_src": "Select video src",
+            "picture_src": "Select picture src",
+            "put_link": "Put link bellow",
+            "not_valid_url": "Not valid url!",
+            "message_support": "Sorry! This format not supported yet!"
+        },
+        "content_topics": {
+            "vote": "Vote",
+            "placeholder_comment": "Your comment..."
+        }
     }
 }
