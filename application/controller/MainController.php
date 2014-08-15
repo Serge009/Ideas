@@ -70,7 +70,7 @@ class MainController extends Controller {
     //$.post('/ideas/main/createComment', {"topic": 10, "comment": "sdfsdfsdfsdfsdfsdf"})
     public function createComment(){
         if($_SERVER['REQUEST_METHOD'] == "POST"){
-            $res = array("status" => false, "msg" => "", "name" => "", "surname" => "");
+            $res = array("status" => false, "msg" => "", "name" => "", "surname" => "", "commentsCount" => 0);
             if(!isset($_POST['topic']) || !isset($_POST['comment'])){
                 echo json_encode($res);
             } else {
@@ -90,6 +90,7 @@ class MainController extends Controller {
                     $res['status'] = true;
                     $res['name'] = $_SESSION['user']->getName();
                     $res['surname'] = $_SESSION['user']->getSurname();
+                    $res['commentsCount'] = $topic->activeCommentsCount();
                     echo json_encode($res);
                 } catch (Exception $e){
                     //var_dump($e);
@@ -123,6 +124,7 @@ class MainController extends Controller {
                     }
 
                     $vote->setMark($mark);
+                    $newMark = $topic->calculateMark();
 
 
 
