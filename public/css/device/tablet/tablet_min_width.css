@@ -1,6 +1,5 @@
 #main {
     background-color: deepskyblue;
-
 }
 
 #logo {
@@ -66,10 +65,20 @@
     margin-top: -22px;
     margin-left: 0;
     width: 100%;
+    border: none;
 }
 
 #list ul li a span i {
     display: block;
+}
+
+#list ul li a span div {
+    display: block;
+}
+
+#list ul li a span div {
+    margin: 0 auto;
+    text-align: center;
 }
 
 .div_discussion_product {

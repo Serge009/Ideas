@@ -90,7 +90,8 @@ class MainController extends Controller {
                     $res['status'] = true;
                     $res['name'] = $_SESSION['user']->getName();
                     $res['surname'] = $_SESSION['user']->getSurname();
-                    $res['commentsCount'] = $topic->activeCommentsCount();
+
+                    $res['commentsCount'] = $topic->getActiveCommentsCount();
                     echo json_encode($res);
                 } catch (Exception $e){
                     //var_dump($e);
@@ -124,13 +125,13 @@ class MainController extends Controller {
                     }
 
                     $vote->setMark($mark);
-                    $newMark = $topic->calculateMark();
-
-
+                    $topic->calculateMark();
 
                     $this->em->persist($vote);
                     $this->em->flush();
-                    echo true;
+
+                    echo json_encode(array("new_mark"=> $topic->getMark()));
+
                 } catch (Exception $e){
                     echo false;
                 }

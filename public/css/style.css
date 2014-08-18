@@ -240,19 +240,44 @@ body, html {
     color: white;
 }
 
+#list ul li a:hover img:first-child {
+    display: none;
+}
+
+#list ul li a:hover img:last-child {
+    display: inline-block;
+}
+
 #list ul li a span {
-    height: 30px;
+    height: 40px;
     min-width: 60px;
     position: absolute;
-    top: 50%;
+    top: 47%;
     margin-top: -15px;
-    margin-left: 20px;
+    margin-left: 10px;
 }
 
-#list i {
-    font-size: 24px;
+#list ul li a span div {
+    display: inline-block;
 }
 
+#list ul li a span div:first-child {
+    float: left;
+    margin-top: 0;
+}
+
+#list ul li a span div:last-child {
+    margin-left: 3px;
+    padding-top: 5px;
+}
+
+#list img:first-child {
+    display: inline-block;
+}
+
+#list img:last-child {
+    display: none;
+}
 
 .discussion_product {
     width: 95%;
@@ -619,12 +644,23 @@ body, html {
 .table .add_comment {
     background-color: lightgrey;
 }
+.td_comment {
+    text-align: left;
+    width: 80%;
+    border: none;
+}
+
+
+.td_comment p {
+    word-break: break-all;
+}
 
 .comment {
-    height: 35px;
+    min-height: 35px;
     width: 90%;
     font-size: 16px;
     resize: none;
+    word-wrap: break-word;
 }
 
 .send {
@@ -669,6 +705,14 @@ body, html {
 .menu-active{
     background-color: #9966CC;
     color: white;
+}
+
+.menu-active img:first-child {
+    display: none !important;
+}
+
+.menu-active img:last-child {
+    display: inline-block !important;
 }
 
 .menu-active span{

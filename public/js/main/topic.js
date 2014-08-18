@@ -1,6 +1,7 @@
 url = "/ideas/";
 button   = null;
 textarea = null;
+var div_topic = null;
 mass_mark = [2, 4, 6, 8, 10];
 
 $(document).ready(function() {
@@ -8,7 +9,8 @@ $(document).ready(function() {
         button = $(this);
         textarea = $(button).closest("form").find("textarea.comment");
         var comment = $(textarea).val();
-        var id_topic = $(button).closest("[data-id-discussion]").attr("data-id-discussion");
+        div_topic = $(button).closest("[data-id-discussion]");
+        var id_topic = $(div_topic).attr("data-id-discussion");
         if(comment == "") {
             alert("Fill in the comment field!");
             return;
@@ -24,8 +26,8 @@ $(document).ready(function() {
         if($.inArray(mark, mass_mark) == -1) {
             return;
         }
-
-        var id_topic = $(this).closest("[data-id-discussion]").attr("data-id-discussion");
+        div_topic = $(this).closest("[data-id-discussion]");
+        var id_topic = $(div_topic).attr("data-id-discussion");
         sendDataVote(mark, id_topic);
     });
 });
@@ -49,6 +51,12 @@ function sendComment(comment, id_topic) {
                 return;
             }
             if(("status" in responce) && responce.status == true) {
+
+                if("commentsCount" in responce) {
+                    $("[data-count-comment]", div_topic).attr("data-count-comment", responce.commentsCount);
+                    $("[data-count-comment] div", div_topic).html(responce.commentsCount);
+                }
+
                 var tr = $(button).closest("tr");
                 $(tr).before(
                     '<tr>' +
@@ -79,7 +87,21 @@ function sendDataVote(mark, id_topic) {
             "mark":     mark
         },
         success: function(responce) {
-            if(responce == 1) {
+            var half = false;
+
+            if(("new_mark" in responce) && responce !== 0) {
+                $(".mark_star span", div_topic).html("");
+                $(div_topic).find("[data-star-discussion]").attr("data-star-discussion", responce.new_mark);
+
+                if(responce.new_mark % 2 != 0) {
+                     half = true;
+                }
+                for(var i = 0; i < Math.floor(responce.new_mark/2); i++) {
+                    $(".mark_star span", div_topic).append('<i class="fa fa-star"></i>');
+                }
+                if(half) {
+                    $(".mark_star span", div_topic).append('<i class="fa fa-star-half"></i>');
+                }
                 //alert("Your vote took");
             }
             if(responce == 0) {

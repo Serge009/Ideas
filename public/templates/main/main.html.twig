@@ -29,6 +29,10 @@
     <script src="{{ url }}public/js/device/mobile.js"></script>
     <script src="{{ url }}public/js/device/tablet.js"></script>
 
+    <script src="{{ url }}public/js/plugins/jquery.autosize.min.js"></script>
+
+    <script src="{{ url }}public/js/hover.js"></script>
+
     <script>
         $(document).ready(function () {
             /*
@@ -164,6 +168,9 @@
         $(".div_discussion_product").on("tap", function () {
             $(this).next().slideToggle();
         });
+
+        $('textarea').autosize();
+        $(".comment").css("height", "28px");
     });
 </script>
 </html>

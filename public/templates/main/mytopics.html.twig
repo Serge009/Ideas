@@ -1,12 +1,39 @@
 {% extends "main.html.twig" %}
 {% block menu %}
     <ul>
-        <li><a href="{{ url }}main/topics"><span> <i
-                            class="glyphicon glyphicon-facetime-video"></i> &nbsp;{{ lang.all_topics }}</span></a></li>
-        <li><a class="menu-active" href="{{ url }}main/mytopics"><span> <i class="glyphicon glyphicon-book"></i> &nbsp;{{ lang.my_topics }}</span></a>
+        <li>
+            <a href="{{ url }}main/topics">
+                <span>
+                    <div>
+                        <img src="{{ url }}public/img/1.png">
+                        <img src="{{ url }}public/img/hover/1.png">
+                    </div>
+                    <div> {{ lang.all_topics }} </div>
+                </span>
+            </a>
         </li>
-        <li><a href="{{ url }}main/shared"><span> <i
-                            class="glyphicon glyphicon-bookmark"></i> &nbsp;{{ lang.admin_topics }}</span></a></li>
+        <li>
+            <a class="menu-active" href="{{ url }}main/mytopics">
+                <span>
+                    <div>
+                        <img src="{{ url }}public/img/2.png">
+                        <img src="{{ url }}public/img/hover/2.png">
+                    </div>
+                    <div>{{ lang.my_topics }}</div>
+                </span>
+            </a>
+        </li>
+        <li>
+            <a href="{{ url }}main/shared">
+                <span>
+                    <div>
+                        <img src="{{ url }}public/img/3.png">
+                        <img src="{{ url }}public/img/hover/3.png">
+                    </div>
+                    <div>{{ lang.admin_topics }}</div>
+                </span>
+            </a>
+        </li>
     </ul>
 {% endblock %}
 {% block content %}
@@ -93,25 +120,27 @@
                 <table class="table">
                     {% for comment in topic.comments %}
                         {% if comment.deleted == false %}
-                        <tr>
-                            <td class="author_comment">
-                                <span>{{ comment.creator.name ~ ' ' ~ comment.creator.surname }}</span>
-                            </td>
-                            <td class="comment">
-                          <span>
-                              {{ comment.comment }}
-                          </span>
-                            </td>
-                        </tr>
+                            <tr>
+                                <td class="author_comment">
+                                    <span>{{ comment.creator.name ~ ' ' ~ comment.creator.surname }}</span>
+                                </td>
+                                <td class="td_comment">
+                                    <p>
+                                        {{ comment.comment }}
+                                    </p>
+                                </td>
+                            </tr>
                         {% endif %}
                     {% endfor %}
                     <tr>
                         <td class="add_comment" colspan="2">
-                            <form>
-                                <textarea style="float: left;" name="comment" class="comment"
+
+                            <form onsubmit="return false;">
+                                <textarea style="float: left;" cols="20" name="comment" class="comment"
                                           placeholder="{{ lang.content_topics.placeholder_comment }}"></textarea>
                                 <input type="button" value="{{ lang.button.send }}" class="send">
                             </form>
+
                         </td>
                     </tr>
                 </table>
