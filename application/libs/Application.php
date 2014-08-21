@@ -30,6 +30,9 @@ class Application {
             // if so, then load this file and create this controller
            $this->url_controller = new $this->url_controller($em);
 
+
+            //echo $this->url_controller."<br>";
+
             // check for method: does such a method exist in the controller ?
             // call the method and pass the arguments to it
             if(!is_callable(array($this->url_controller, $this->url_action))){
@@ -38,6 +41,7 @@ class Application {
                 // will translate to something like $this->login->method($param_1, $param_2, $param_3);
                 $this->url_controller->{$this->url_action}($this->url_parameter_1, $this->url_parameter_2, $this->url_parameter_3);
             } elseif (isset($this->url_parameter_2)) {
+
                 // will translate to something like $this->login->method($param_1, $param_2);
                 $this->url_controller->{$this->url_action}($this->url_parameter_1, $this->url_parameter_2);
             } elseif (isset($this->url_parameter_1)) {

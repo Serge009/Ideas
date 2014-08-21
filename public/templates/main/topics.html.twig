@@ -2,7 +2,7 @@
 {% block menu %}
     <ul>
         <li>
-            <a class="menu-active" href="{{ url }}main/topics">
+            <a class="menu-active" href="{{ url }}main/topics" >
                 <span>
                     <div>
                         <img src="{{ url }}public/img/1.png">
@@ -65,7 +65,7 @@
                     </div>
                     <div class="count_comment" data-count-comment="{{ topic.activeCommentsCount }}">
                     <span>
-                          <i class="glyphicon glyphicon-comment" style="font-size: 14px; margin-right: 10px;"></i>
+                          <i class="fa fa-comment" style="font-size: 14px; margin-right: 10px;"></i>
                           <div style="display: inline-block; float: right; margin-right: 10px;">
                               {{ topic.activeCommentsCount }}
                           </div>
@@ -75,9 +75,7 @@
             </div>
             <div style="width: 100%; display: none;">
                 <div class="description">
-                    <p>
-                        {{ topic.message }}
-                    </p>
+                    <p>{{ topic.message }}</p>
                 </div>
                 <div class="div_img">
                     {%  if  topic.linkType == 1 and topic.fileType|length > 0 %}
@@ -124,7 +122,7 @@
                         <td class="author_comment">
                             <span>{{ comment.creator.name ~ ' ' ~ comment.creator.surname }}</span>
                         </td>
-                        <td class="td_comment">
+                        <td class="td_comment" data-id-comment = '{{ comment.id }}'>
                           <p>
                               {{ comment.comment }}
                           </p>

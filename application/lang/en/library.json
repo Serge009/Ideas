@@ -86,8 +86,12 @@
             "video": "Video",
             "local": "Local",
             "link": "Link",
-            "save": "Save"
+            "save": "Save",
+            "next": "Next",
+            "search": "Search",
+            "cancel": "Cancel"
         },
+        "search_title": "Search",
         "modal_window": {
             "close": "Close",
             "select_type": "Select Type",
@@ -102,23 +106,44 @@
             "placeholder_comment": "Your comment..."
         },
 
-        "time" : {
-            "years" : "years",
-            "year" : "year",
-            "months" : "months",
-            "month" : "month",
-            "weeks" : "weeks",
-            "week" : "week",
-            "days" : "days",
-            "day" : "day",
-            "hours" : "hours",
-            "hour" : "hour",
-            "minutes" : "minutes",
-            "minute" : "minute",
-            "seconds" : "seconds",
-            "second" : "second",
-            "postedJustNow" : "posted just now",
-            "ago" : "ago"
+        "popup": {
+            "message1": "Some text 1",
+            "message2": "Some text 2",
+            "message3": "Some text 3",
+            "message4": "Some text 4",
+            "message5": "Some text 5",
+            "message6": "Some text 6",
+            "message7": "Some text 7"
+
+        },
+
+        "num_step": {
+            "step1": "(1/7)",
+            "step2": "(2/7)",
+            "step3": "(3/7)",
+            "step4": "(4/7)",
+            "step5": "(5/7)",
+            "step6": "(6/7)",
+            "step7": "(7/7)"
         }
+
+    },
+    "time" : {
+        "years" : "years",
+        "year" : "year",
+        "months" : "months",
+        "month" : "month",
+        "weeks" : "weeks",
+        "week" : "week",
+        "days" : "days",
+        "day" : "day",
+        "hours" : "hours",
+        "hour" : "hour",
+        "minutes" : "minutes",
+        "minute" : "minute",
+        "seconds" : "seconds",
+        "second" : "second",
+        "postedJustNow" : "posted just now",
+        "ago" : "ago"
     }
 }

@@ -42,7 +42,30 @@ class User {
      */
     private $deleted = false;
 
+    /**
+     * @Column(type="boolean", name="first_start", nullable=false)
+     *
+     */
+    private $firstStart = false;
 
+    /**
+     * @param boolean $firstStart
+     * @return User
+     */
+    public function setFirstStart($firstStart)
+    {
+        $this->firstStart = $firstStart;
+
+        return $this;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function getFirstStart()
+    {
+        return $this->firstStart;
+    }
 
     /**
      * Get id

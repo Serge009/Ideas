@@ -51,6 +51,10 @@
     float: none !important;
 }
 
+#tool div img {
+    float: none !important;
+}
+
 #tool div {
     position: relative;
     text-align: center;
@@ -59,26 +63,27 @@
 }
 
 #list ul li a span {
-    height: 80%;
-    display: block;
-    text-align: center;
-    margin-top: -22px;
-    margin-left: 0;
     width: 100%;
-    border: none;
+    height: 100%;
+    top: 25%;
+    margin-left: 1%;
 }
 
-#list ul li a span i {
-    display: block;
-}
-
-#list ul li a span div {
-    display: block;
-}
 
 #list ul li a span div {
+    display: block;
     margin: 0 auto;
     text-align: center;
+}
+
+#list ul li a span div:first-child {
+    float: none;
+    margin-top: 0;
+}
+
+#list ul li a span div:last-child {
+    margin: 0;
+    padding: 0;
 }
 
 .div_discussion_product {
@@ -157,4 +162,52 @@
 
 #left_vertical_menu {
     display: inline-block;
+}
+
+.chevron {
+    width: 15px !important;
+    height: 25px !important;
+    float: left;
+    position: absolute !important;
+    margin-top: -1px;
+    margin-left: 7%;
+    z-index: 2001;
+}
+
+#sort_star .chevron {
+    margin-left: 7% !important;
+}
+
+#sort_comment .chevron {
+    margin-left: 7% !important;
+}
+
+.border_right {
+    width: 2px !important;
+    height: 42px !important;
+    float: left;
+    position: absolute !important;
+    background-color: lightgray;
+    margin-top: -15px;
+    margin-left: 65%;
+}
+
+#sort_star .border_right {
+    margin-left: 65%;
+}
+
+.div_border_sort {
+    width: 88% !important;
+    height: 4px !important;
+    float: left;
+    position: absolute !important;
+    background-image: url("../img/background.png");
+    background-repeat: repeat-x repeat-y;
+    margin-top: 29px;
+    margin-left: -22%;
+}
+
+#sort_comment .div_border_sort {
+    width: 79% !important;
+    margin-left: -22%;
 }

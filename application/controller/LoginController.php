@@ -19,7 +19,9 @@ class LoginController extends Controller {
 
         $user = $this->em->getRepository("User")->findBy(array("login" => $login, "pass" => $pass, "deleted" => 0), null, 1);
 
+        //var_dump($user);
         if(isset($user[0])){
+
             $_SESSION['user'] = $user[0];
             $userType = $user[0]->getType()->getId();
             $_SESSION['user_type'] = $userType;

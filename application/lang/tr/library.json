@@ -90,8 +90,12 @@
             "video": "Video",
             "local": "Lokal",
             "link": "Link",
-            "save": "Sakla"
+            "save": "Sakla",
+            "next": "Sonraki",
+            "search": "Search",
+            "cancel": "Cencel"
         },
+        "search_title": "Search",
         "modal_window": {
             "close": "Kapat",
             "select_type": "Tür Seç",
@@ -104,9 +108,29 @@
         "content_topics": {
             "vote": "Puan ver",
             "placeholder_comment": "Yorum Yap..."
+        },
+
+        "popup": {
+            "message1": "Some text 1",
+            "message2": "Some text 2",
+            "message3": "Some text 3",
+            "message4": "Some text 4",
+            "message5": "Some text 5",
+            "message6": "Some text 6",
+            "message7": "Some text 7"
+
+        },
+
+        "num_step": {
+            "step1": "(1/7)",
+            "step2": "(2/7)",
+            "step3": "(3/7)",
+            "step4": "(4/7)",
+            "step5": "(5/7)",
+            "step6": "(6/7)",
+            "step7": "(7/7)"
         }
     },
-
     "time" : {
         "years" : "Yıl",
         "year" : "Yıl",

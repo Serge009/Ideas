@@ -21,29 +21,67 @@ class MainController extends Controller {
             $this->checkAccess();
     }
 
-    public function topics(){
+    public function topics($id_topic = 0, $id_comment = 0){
+
         $topics = $this->em->getRepository("Topic")->findActiveByUserType(ROLE_USER);
         foreach($topics as $topic){
             $topic->calculateMark();
         }
         $this->setUserMark($topics);
-        echo $this->twig->render("topics.html.twig", array("topics" => $topics, "lang" => $this->lang['main'], "user" => $_SESSION['user']));
+
+
+        $userOld = $_SESSION['user'];
+        if(!$_SESSION['user']->getFirstStart()){
+
+            $user = $this->em->getRepository("User")
+                ->findOneBy(array("id" => $_SESSION['user']->getId()));
+
+            $user->setFirstStart(true);
+            $this->em->persist($user);
+            $this->em->flush();
+
+
+        }
+
+
+       echo $this->twig->render("topics.html.twig",
+           array("topics" => $topics, "lang" => $this->lang['main'], "user" => $userOld,
+                 "id_topic" => $id_topic, "id_comment" => $id_comment));
+
+        $_SESSION['user']->setFirstStart(true);
+
+/*
+        if(!$_SESSION['user']->getFirstStart()){
+            $user = $this->em->getRepository("User")
+                ->findOneBy(array("id" => $_SESSION['user']->getId()));
+
+            $user->setFirstStart(true);
+            $this->em->persist($user);
+            $this->em->flush();
+
+            $_SESSION['user'] = $user;
+        }
+*/
     }
 
 
 
-    public function myTopics(){
+    public function myTopics($id_topic = 0, $id_comment = 0){
         $topics = $this->em->getRepository("Topic")->findActiveByUserId($_SESSION['user']->getId());
         foreach($topics as $topic){
             $topic->calculateMark();
         }
         $this->setUserMark($topics);
-        echo $this->twig->render("mytopics.html.twig", array("topics" => $topics, "lang" => $this->lang['main'], "user" => $_SESSION['user']));
+        echo $this->twig->render("mytopics.html.twig",
+            array("topics" => $topics, "lang" => $this->lang['main'], "user" => $_SESSION['user'],
+                  "id_topic" => $id_topic, "id_comment" => $id_comment));
     }
 
-    public function shared(){
+    public function shared($id_topic = 0, $id_comment = 0){
         $topics = $this->em->getRepository("Topic")->findActiveByUserType(ROLE_ADMIN);
-        echo $this->twig->render("shared.html.twig", array("topics" => $topics, "lang" => $this->lang['main'], "user" => $_SESSION['user']));
+        echo $this->twig->render("shared.html.twig",
+            array("topics" => $topics, "lang" => $this->lang['main'], "user" => $_SESSION['user'],
+                  "id_topic" => $id_topic, "id_comment" => $id_comment));
     }
 
     public function createTopic(){
@@ -250,4 +288,5 @@ class MainController extends Controller {
             }
         }
     }
+
 } 

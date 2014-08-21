@@ -3126,7 +3126,7 @@ tbody.collapse.in {
   position: absolute;
   top: 100%;
   left: 0;
-  z-index: 1000;
+  z-index: 990;
   display: none;
   float: left;
   min-width: 160px;
@@ -3218,7 +3218,7 @@ tbody.collapse.in {
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: 990;
+  z-index: 980;
 }
 .pull-right > .dropdown-menu {
   right: 0;
@@ -3841,7 +3841,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   }
 }
 .navbar-static-top {
-  z-index: 1000;
+  z-index: 950;
   border-width: 0 0 1px;
 }
 @media (min-width: 768px) {
@@ -3854,7 +3854,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   position: fixed;
   right: 0;
   left: 0;
-  z-index: 1030;
+  z-index: 1020;
   -webkit-transform: translate3d(0, 0, 0);
        -o-transform: translate3d(0, 0, 0);
           transform: translate3d(0, 0, 0);
@@ -5378,7 +5378,7 @@ button.close {
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: 1050;
+  z-index: 1040;
   display: none;
   overflow: hidden;
   -webkit-overflow-scrolling: touch;
@@ -5424,7 +5424,7 @@ button.close {
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: 1040;
+  z-index: 1030;
   background-color: #000;
 }
 .modal-backdrop.fade {
@@ -5493,7 +5493,7 @@ button.close {
 }
 .tooltip {
   position: absolute;
-  z-index: 1070;
+  z-index: 1060;
   display: block;
   font-size: 12px;
   line-height: 1.4;
@@ -5593,7 +5593,7 @@ button.close {
   position: absolute;
   top: 0;
   left: 0;
-  z-index: 1060;
+  z-index: 1050;
   display: none;
   max-width: 276px;
   padding: 1px;

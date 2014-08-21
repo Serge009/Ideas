@@ -413,6 +413,7 @@ class Topic {
      * @return null|string
      */
     private function timeAgo($granularity=1, array $lang) {
+
         $date = ($this->date_created) ? $this->date_created->getTimestamp () : time();
         $difference = time() - $date;
         $periods = array('decade' => 315360000,
@@ -447,6 +448,7 @@ class Topic {
      */
     public function getTimeAgo()
     {
+        //var_dump(Controller::$language['time']);
         if(!$this->timeAgo && isset(Controller::$language['time'])){
             $this->timeAgo = $this->timeAgo(1, Controller::$language['time']);
         }

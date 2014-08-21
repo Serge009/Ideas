@@ -63,8 +63,8 @@ function sendComment(comment, id_topic) {
                         '<td class="author_comment">' +
                         '<span>'+ responce.name + ' ' + responce.surname +'</span>' +
                         '</td>' +
-                        '<td class="comment">' +
-                        '<span>'+ comment +'</span>' +
+                        '<td class="td_comment">' +
+                        '<p>'+ comment +'</p>' +
                         '</td>' +
                         '</tr>');
                 $(textarea).val("");

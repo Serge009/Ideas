@@ -6,7 +6,7 @@ use Doctrine\ORM\Tools\Setup;
 use Doctrine\ORM\EntityManager;
 
 $paths = array("application/entity");
-$isDevMode = false;
+$isDevMode = true;
 
 // the connection configuration
 $dbParams = array(

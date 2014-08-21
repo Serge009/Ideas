@@ -64,7 +64,7 @@
             <div style="float: left; margin-left: 5%; height: 40px; cursor: pointer;" id="div_file"
                  data-toggle="modal" data-target="#topic-file">
                         <span style="height: 100%; display: block; position: relative;">
-                            <i class="glyphicon glyphicon-picture" style="font-size: 32px; color: #9966CC;"></i>
+                            <i class="glyphicon glyphicon-picture" style="font-size: 32px; color: #9C8DC3;"></i>
                             <span style="position: relative; bottom: 5px;" id="name_file">{{ lang.new_topic.add_media }}
                             </span>
                         </span>
@@ -237,7 +237,10 @@
             }
 
         });
+$(document).ready(function() {
 
+    $("#header").css("z-index", "1");
+});
         //var file = document.getElementById('file').files[0];
 
         /*
