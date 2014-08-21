@@ -17,7 +17,7 @@ class LoginController extends Controller {
         $login = $this->validate($_POST["login"]);
         $pass = $this->validate($_POST["pass"]);
 
-        $user = $this->em->getRepository("User")->findBy(array("login" => $login, "pass" => $pass), null, 1);
+        $user = $this->em->getRepository("User")->findBy(array("login" => $login, "pass" => $pass, "deleted" => 0), null, 1);
 
         if(isset($user[0])){
             $_SESSION['user'] = $user[0];
