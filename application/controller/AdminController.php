@@ -23,6 +23,7 @@ class AdminController extends Controller {
         $repository = $this->em->getRepository("Topic");
         $qb = $repository->createQueryBuilder('u');
         $qb->where('u.creator != :creator')
+            ->andWhere('u.deleted = 0')
             ->setParameter('creator', $_SESSION['user']->getId());
 
         $topics = $qb->getQuery()
@@ -42,8 +43,8 @@ class AdminController extends Controller {
     }
 
     public function users(){
-        $userType = $this->em->getRepository("UserType")->findBy(array("id" => ROLE_USER));
-        $users = $this->em->getRepository("User")->findBy(array("type" => $userType));
+        $userType = $this->em->getRepository("UserType")->findOneBy(array("id" => ROLE_USER));
+        $users = $this->em->getRepository("User")->findActiveByUserType($userType);
 
         echo $this->twig->render("users.html.twig", array("users" => $users, "lang" => $this->lang['admin']));
     }
@@ -57,7 +58,7 @@ class AdminController extends Controller {
 
 
     public function shared(){
-        $topics = $this->em->getRepository("Topic")->findAllByUserType($_SESSION['user']->getId());
+        $topics = $this->em->getRepository("Topic")->findActiveByUserId($_SESSION['user']->getId());
 
         echo $this->twig->render("topics.html.twig", array("topics" => $topics, "admin" => true, "lang" => $this->lang['admin']));
     }

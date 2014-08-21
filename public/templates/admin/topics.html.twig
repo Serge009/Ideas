@@ -85,6 +85,7 @@
 
                             <tbody>
                             {% for comment in topic.comments %}
+                                {% if comment.deleted == false %}
                                 <tr>
                                     <td class="comment-author">{{ comment.creator.name ~ ' ' ~ comment.creator.surname }}</td>
                                     <td class="comment-msg">{{ comment.comment }}</td>
@@ -98,6 +99,7 @@
                                     {% endif %}
                                     </td>
                                 </tr>
+                                {% endif %}
                             {% endfor %}
                             </tbody>
                         </table>
@@ -119,6 +121,7 @@
         td.comment-msg{
             width: 75%;
             text-align: justify;
+            word-break: break-all;
         }
         td.comment-action{
             width: 5%;
@@ -141,6 +144,8 @@
             console.log(url);
             $.get(url).success(function(msg){
                 if(msg){
+                    o.parents('tr').remove();
+                    console.log(o.parents('tr'));
                     url = switchAction(url) + msg;
                     console.log(url);
                     o.attr("data-link", url);
