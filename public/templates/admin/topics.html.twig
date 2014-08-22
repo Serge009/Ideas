@@ -133,12 +133,21 @@
 
     <script>
         $("i.topic-status").bind("click", function(){
-            var url = $(this).attr("data-link");
-            location.href = url;
+
+            var ans = confirm("Bu fikri silmek istediğinizden emin misiniz?");
+            if(ans){
+                var url = $(this).attr("data-link");
+                location.href = url;
+            }
             return false;
         });
 
         $("td.comment-action").bind("click", function(){
+
+            var ans = confirm("Bu yorum silmek istediginize emin misiniz?");
+            if(!ans){
+                return false;
+            }
             var o = $(this).find("i.comment-status"),
               url = o.attr("data-link");
             console.log(url);

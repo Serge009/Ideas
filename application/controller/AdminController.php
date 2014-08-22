@@ -24,7 +24,8 @@ class AdminController extends Controller {
         $qb = $repository->createQueryBuilder('u');
         $qb->where('u.creator != :creator')
             ->andWhere('u.deleted = 0')
-            ->setParameter('creator', $_SESSION['user']->getId());
+            ->setParameter('creator', $_SESSION['user']->getId())
+            ->orderBy("u.date_created", "DESC");
 
         $topics = $qb->getQuery()
             ->getResult();

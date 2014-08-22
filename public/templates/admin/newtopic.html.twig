@@ -44,6 +44,7 @@
                 <button type="button" class="btn btn-success" data-toggle="modal" data-target="#topic-file">
                     {{ lang.topic.btnFile }}
                 </button>
+                <label style="width: 100%; margin-top: 20px" id="link-label"></label>
             </div>
         </div>
     </form>
@@ -182,6 +183,10 @@
             input.trigger("click");
         });
 
+        $("input#topic-input-file").bind("change", function(){
+            $("label#link-label").text($(this).val());
+        });
+
         $("#type-video-btn").bind("click", function () {
             $("#new-topic-form #topic-input-type").val("video");
         });
@@ -199,6 +204,7 @@
                 return false;
             }
             msg.addClass("hidden");
+            $("label#link-label").text(link);
             $("#new-topic-form #topic-input-link").val(link);
         });
 

@@ -11,6 +11,7 @@
             <th>{{ lang.user.name }}</th>
             <th>{{ lang.user.surname }}</th>
             <th>{{ lang.user.login }}</th>
+            <th>{{ lang.user.password }}</th>
             <th>{{ lang.user.type }}</th>
             <th>{{ lang.user.status }}</th>
             <th>{{ lang.user.action }}</th>
@@ -22,6 +23,7 @@
                 <td>{{ user.name }}</td>
                 <td>{{ user.surname }}</td>
                 <td>{{ user.login }}</td>
+                <td>{{ user.pass }}</td>
                 <td>{{ user.type.type }}</td>
                 <td>
                     <span class="label label-{% if user.deleted %}danger">{{ lang.status.deleted }}{% else %}success">{{ lang.status.active }}{% endif %}
@@ -29,12 +31,12 @@
                 </td>
                 <td>
                     {% if user.deleted %}
-                        <a href="{{ url }}users/activate/{{ user.id }}"
+                        <a class="users" data-link="{{ url }}users/activate/{{ user.id }}"
                            data-toggle="tooltip" title="{{ lang.action.activate }}">
                             <i class="glyphicon glyphicon-ok"></i>
                         </a>
                     {% else %}
-                        <a href="{{ url }}users/delete/{{ user.id }}"
+                        <a class="users" data-link="{{ url }}users/delete/{{ user.id }}"
                            data-toggle="tooltip" title="{{ lang.action.delete }}">
                             <i class="glyphicon glyphicon-remove"></i>
                         </a>
@@ -45,5 +47,19 @@
         {% endfor %}
         </tbody>
     </table>
+
+    <script>
+
+        $("a.users").bind("click", function(){
+            var link = $(this).attr("data-link");
+            var ans = confirm("Bu Kullaniciyi silmek istediginize emin misiniz?");
+            if(ans){
+                location.href = link;
+            }
+
+            return false;
+        });
+
+    </script>
 
 {% endblock %}
