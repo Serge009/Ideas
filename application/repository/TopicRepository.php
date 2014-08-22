@@ -11,7 +11,7 @@ class TopicRepository extends EntityRepository
 
         //$qb = $this->getEntityManager()->createQueryBuilder("t");
         $query = $this->getEntityManager()
-            ->createQuery("SELECT t FROM Topic t JOIN t.creator c WHERE c.type = :type ORDER BY t.id")
+            ->createQuery("SELECT t FROM Topic t JOIN t.creator c WHERE c.type = :type ORDER BY t.id DESC")
             ->setParameter("type", $userType);
 
         $topics = $query->execute();
@@ -22,7 +22,7 @@ class TopicRepository extends EntityRepository
     public function findAllByUserId($id = 0){
         //$qb = $this->getEntityManager()->createQueryBuilder("t");
         $query = $this->getEntityManager()
-            ->createQuery("SELECT t FROM Topic t JOIN t.creator c WHERE c.id = :id  ORDER BY t.id")
+            ->createQuery("SELECT t FROM Topic t JOIN t.creator c WHERE c.id = :id  ORDER BY t.id DESC")
             ->setParameter("id", $id);
 
         $topics = $query->execute();
@@ -38,7 +38,7 @@ class TopicRepository extends EntityRepository
 
         //$qb = $this->getEntityManager()->createQueryBuilder("t");
         $query = $this->getEntityManager()
-            ->createQuery("SELECT t FROM Topic t JOIN t.creator c WHERE c.type = :type AND t.deleted = 0 ORDER BY t.id")
+            ->createQuery("SELECT t FROM Topic t JOIN t.creator c WHERE c.type = :type AND t.deleted = 0 ORDER BY t.id DESC")
             ->setParameter("type", $userType);
 
         $topics = $query->execute();

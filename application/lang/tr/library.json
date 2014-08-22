@@ -111,13 +111,13 @@
         },
 
         "popup": {
-            "message1": "Some text 1",
-            "message2": "Some text 2",
-            "message3": "Some text 3",
-            "message4": "Some text 4",
-            "message5": "Some text 5",
-            "message6": "Some text 6",
-            "message7": "Some text 7"
+            "message1": "Paylaşılan bütün fikirleri buradan takip edip yorumlarınızı paylaşabilirsiniz",
+            "message2": "Fikirlerinizin son halini ve sürecini buradan takip edebilirsiniz",
+            "message3": "Nutricia ve inovasyon hakkında paylaşımlara buradan ulaşabilirsiniz",
+            "message4": "Fikirleri istediğiniz kritere gore buradan sıralayabilirsiniz",
+            "message5": "Fikir tekrarına düşmemek için anahtar kelimenizi içeren bütün fikirlere arama yaparak ulaşabilirsiniz",
+            "message6": "Fikirleriniz hakkındaki bildirimleri buradan takip edebilirsiniz",
+            "message7": "Fikirleriniz bu ikona tıklayarak paylaşabilirsiniz"
 
         },
 
