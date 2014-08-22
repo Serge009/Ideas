@@ -71,6 +71,7 @@
             </div>
             <input type="submit" value="{{ lang.button.send }}" class="send" style="float: right; margin-right: 5%; margin-top: 5px;">
         </form>
+        <label style="width: 100%; margin-top: 20px" id="link-label"></label>
     </div>
 
     <div class="modal fade" id="topic-file" tabindex="-1" role="dialog" aria-hidden="true">
@@ -89,7 +90,8 @@
                     <button id="type-video-btn" type="button" class="btn btn-default" data-dismiss="modal"
                             data-toggle="modal" data-target="#topic-video-modal">
                         {{ lang.button.video }}
-                    </button>
+                    </button><br>
+
                 </div>
             </div>
         </div>
@@ -224,6 +226,7 @@
                 return false;
             }
             msg.addClass("hidden");
+            $("label#link-label").text(link);
             $("#new-topic-form #topic-input-link").val(link);
         });
 
@@ -236,6 +239,9 @@
                 }
             }
 
+        });
+        $("input#topic-input-file").bind("change", function(){
+            $("label#link-label").text($(this).val());
         });
 $(document).ready(function() {
 
