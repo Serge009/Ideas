@@ -28,7 +28,7 @@ function loadNewTopics(time) {
         },
         success: function(responce) {
            $.each(responce, function(index, value) {
-               //alert(value);
+                //alert(value);
 
                $("#load_ajax ").css("display", "inline-block");
                $("#load_ajax").append('' +
@@ -52,7 +52,6 @@ function loadNewComments(time) {
         },
         success: function(responce) {
             $.each(responce, function(index, value) {
-                //alert(value);
 
                 $("#load_ajax ").css("display", "inline-block");
                 $("#load_ajax").append('' +

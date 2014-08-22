@@ -475,7 +475,7 @@ body, html {
     position: fixed;
     z-index: 100;
     bottom: 0;
-    left: 55%;
+    left: 50%;
 }
 
 .link_hide {
@@ -1002,4 +1002,22 @@ body, html {
     line-height: 30px;
     font-size: 16px;
     color: #72519C;
+}
+
+.div_p {
+    overflow: hidden;
+    position: relative;
+}
+
+.div_p p {
+    width: 98%;
+}
+.div_p p i {
+    position: absolute;
+    top: 10px;
+    cursor: pointer;
+    display: none;
+    right: 0;
+    color: #72519C;
+    font-size: 22px;
 }

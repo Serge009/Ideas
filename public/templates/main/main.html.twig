@@ -37,6 +37,10 @@
 
     <script src="{{ url }}public/js/load.js"></script>
 
+    <script src="{{ url }}public/js/main/tab_enter.js"></script>
+
+    <script src="{{ url }}public/js/main/comment.js"></script>
+
     <script>
         $(document).ready(function () {
             /*
@@ -224,7 +228,7 @@
 <div id="content">
 <div id="button">
     <a href="{{ url }}main/createTopic">
-        <img src="{{ url }}public/img/button.png" style="cursor: pointer; height: 60px;">
+        <img src="{{ url }}public/img/button.png" style="cursor: pointer; height: 100px;">
     </a>
 </div>
 
@@ -286,9 +290,9 @@
     $(document).ready(function () {
         $(".div_discussion_product").on("click", function () {
             $(this).next().slideToggle();
+            displayComment();
         });
-
-        $('textarea').autosize();
+     $('textarea').autosize();
         $(".comment").css("height", "28px");
 
         var id_topic = {{ id_topic }};
@@ -299,7 +303,7 @@
             $(div_topic).find("div:last-child").css("display", "inline-block");
             var coords_comment = $(comment).offset();
             $("body, html").animate( {
-                scrollTop: coords_comment.top + 120
+                scrollTop: coords_comment.top + 150
             },1000);
             return;
         }
@@ -308,12 +312,36 @@
             var div_topic = $("[data-id-discussion = "+ id_topic +"]");
             $(div_topic).find("div:last-child").css("display", "inline-block");
             var coords_topic = $(div_topic).offset();
-            $("body, html").animate( {
-                scrollTop: coords_topic.top + 80
+            $("body, html").animate({
+                scrollTop: coords_topic.top
             },1000);
         }
 
     });
+    function displayComment() {
+        //****************
+
+        var line_height_p = $("p:first").css("line-height");
+        line_height_p = parseInt(line_height_p);
+
+        $.each($(".div_p p"), function(index, elem) {
+            var height_p = $(elem).height();
+            if(height_p > line_height_p*2) {
+                $("i", $(elem)).css("display", "inline-block");
+            }
+            $("i", $(elem)).bind("click", function() {
+
+                $(elem).closest(".div_p").css("height", height_p + "px");
+                $(this).css("display", "none");
+            });
+        });
+
+        $(".div_p").css("height", line_height_p*2 + "px");
+
+
+        //***********************
+    }
+
 </script>
 
 </body>

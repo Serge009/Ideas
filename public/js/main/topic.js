@@ -64,11 +64,15 @@ function sendComment(comment, id_topic) {
                         '<span>'+ responce.name + ' ' + responce.surname +'</span>' +
                         '</td>' +
                         '<td class="td_comment">' +
-                        '<p>'+ comment +'</p>' +
+                        '<div class="div_p">' +
+                              '<p style="position: relative;"><i id="down_i" class="glyphicon glyphicon-arrow-down"></i>'+ comment +'</p>' +
+                        '</div>' +
+
                         '</td>' +
                         '</tr>');
                 $(textarea).val("");
             }
+            displayComment();
         }
 
     });

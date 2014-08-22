@@ -123,9 +123,12 @@
                             <span>{{ comment.creator.name ~ ' ' ~ comment.creator.surname }}</span>
                         </td>
                         <td class="td_comment" data-id-comment = '{{ comment.id }}'>
-                          <p>
-                              {{ comment.comment }}
-                          </p>
+                            <div class="div_p">
+                                <p style="position: relative">
+                                    <i id="down_i" class="glyphicon glyphicon-arrow-down"></i>
+                                  {{ comment.comment }}
+                                </p>
+                            </div>
                         </td>
                     </tr>
                     {% endif %}
@@ -148,5 +151,4 @@
     {% endfor %}
 
     <script src="{{ url }}public/js/main/topic.js"></script>
-
 {% endblock %}
