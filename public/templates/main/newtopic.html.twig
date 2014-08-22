@@ -240,6 +240,78 @@
 $(document).ready(function() {
 
     $("#header").css("z-index", "1");
+
+    //************************************************
+    var change_title = false;
+    var change_msg   = false;
+
+    var val_title    = null;
+    var val_msg      = null;
+
+    $("#input-title").bind("change", function() {
+        /*val_title = $(this).val();
+        alert(1);
+        if(val_title !== "") {
+            change_title = true;
+        }
+        if(val_title == "") {
+            change_title = false;
+        }
+        */
+    });
+
+    $("#input-msg").bind("change", function() {
+        /*alert(2);
+        val_msg = $(this).val();
+        if(val_msg !== "") {
+            change_msg = true;
+        }
+        if(val_msg == "") {
+            change_msg = false;
+        }
+        */
+    });
+
+    $("#input-title").bind("focus", function() {
+        //alert(1);
+        $(this).keyup(function() {
+            val_title = $(this).val();
+            if(val_title !== "") {
+                change_title = true;
+            }
+            if(val_title == "") {
+                change_title = false;
+            }
+            if(change_title && change_msg) {
+                $(".send").val("Continue");
+            }
+            else {
+                $(".send").val("Devam");
+            }
+        });
+    });
+
+    $("#input-msg").bind("focus", function() {
+        //alert(1);
+        $(this).keyup(function() {
+            val_msg = $(this).val();
+            if(val_msg !== "") {
+                change_msg = true;
+            }
+            if(val_msg == "") {
+                change_msg = false;
+            }
+            if(change_title && change_msg) {
+                //alert("change text button");
+                $(".send").val("Continue");
+            }
+            else {
+
+                $(".send").val("Devam");
+            }
+        });
+    });
+    //************************************************
 });
         //var file = document.getElementById('file').files[0];
 
