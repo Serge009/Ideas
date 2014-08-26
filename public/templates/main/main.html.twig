@@ -300,7 +300,10 @@
         if(id_comment !== 0) {
             var comment = $("[data-id-comment = "+ id_comment +"]");
             var div_topic = $(comment).closest(".discussion_product");
+
             $(div_topic).find("div:last-child").css("display", "inline-block");
+            $(".div_p").css("display", "block");
+            displayComment();
             var coords_comment = $(comment).offset();
             $("body, html").animate( {
                 scrollTop: coords_comment.top + 150
