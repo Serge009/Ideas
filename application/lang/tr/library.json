@@ -7,6 +7,8 @@
     },
 
     "admin": {
+        "userExists" : "Users with this login already exists",
+        "saved" : "Saved!",
         "title" : "Yönetici Panel Türü",
         "users": "Kullanıcılar",
         "topics": "Konular",

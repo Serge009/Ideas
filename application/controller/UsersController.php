@@ -74,7 +74,7 @@ class UsersController extends Controller {
                     $user = $this->checkUpdateInfo($user);
                     $this->em->persist($user);
                     $this->em->flush();
-                    array_push($successes, "Saved!");
+                    array_push($successes, $this->lang['admin']['saved']);
                 } else {
                     array_push($errors, "Such user doesn't exists!");
                 }
@@ -82,7 +82,7 @@ class UsersController extends Controller {
 
 
             } catch (Exception $e){
-                array_push($errors, $e->getMessage());
+                array_push($errors, $this->lang['admin']['userExists']);
 
             }
 
